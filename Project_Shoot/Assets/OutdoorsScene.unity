@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2157.1738, g: 2261.871, b: 3287.0977, a: 1}
+  m_IndirectSpecularColor: {r: 2159.8672, g: 2263.4707, b: 3285.3594, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -583,14 +583,43 @@ MonoBehaviour:
   mvmtX: 0
   mvmtY: 0
   mvmtScale: 5
+  mvmtProgress: 0
+  mvmtSpeed: 15
   isMoving: 0
   canMove: 0
+  transition: 0
   player: {fileID: 468180055}
   front: {fileID: 837492454}
   back: {fileID: 152773268}
   left: {fileID: 1321761268}
   right: {fileID: 1685308798}
-  Mov: {x: 0, y: 0, z: 0}
+  Update: {x: 0, y: 0, z: 0}
+  initialPos: {x: 0, y: 0, z: 0}
+  NewPos: {x: 0, y: 0, z: 0}
+  Smoother:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &670157714
 GameObject:
   m_ObjectHideFlags: 0
