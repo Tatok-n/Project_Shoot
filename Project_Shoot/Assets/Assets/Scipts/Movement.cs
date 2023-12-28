@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
 
     public PadController[] pads;
     public GameObject PadContainer;
+
+    public ShootRay shooter;
     
      void OnMove (InputValue movementValue)
     {
@@ -117,6 +119,14 @@ public class Movement : MonoBehaviour
             
         }
     }
+    }
+
+    void OnDash(InputValue Button) {
+        if (Button.Get<float>()==1) {
+            Debug.Log(shooter.Shooter());
+        }
+        
+        
     }
     void FixedUpdate()
     {
