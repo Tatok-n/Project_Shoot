@@ -7,10 +7,13 @@ public class Movement : MonoBehaviour
 {
     public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed;
     public bool isMoving,canMove,transition;
-    public Transform player,front,back,left,right;
+    public Transform player,front,back,left,right,cam;
 
-    public Vector3 Update,initialPos,NewPos;
+    public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn;
     public AnimationCurve Smoother;
+
+    public PadController[] pads;
+    public GameObject PadContainer;
     
      void OnMove (InputValue movementValue)
     {
@@ -28,23 +31,46 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player.position = Vector3.zero;
+        player.position = Spawn;
+        Forward = Vector3.forward;
+        Right = Vector3.right;
+        pads = PadContainer.GetComponentsInChildren<PadController>();
+
+    }
+
+    void Allign() {
+        float angle = cam.eulerAngles.y;
+        if (angle<=45f || angle >= 315f) { //Looking original Forward
+            Forward = Vector3.forward;
+            Right = Vector3.right;
+        } else if (angle >=45f && angle <= 135f) //looking original Right 
+        {
+            Forward = Vector3.right;
+            Right = -Vector3.forward;
+        } else if (angle >= 135f && angle <= 225) //looking original behind
+        {
+            Forward = -Vector3.forward;
+            Right = -Vector3.right;
+        } else {
+            Forward = -Vector3.right;
+            Right = Vector3.forward;
+        }
     }
 
     void CheckBounds() {
-        if  (player.position.x >= left.position.x - 0.5f && mvmtX == 1)
+        if  (player.position.x >= left.position.x - 1.6f && mvmtX == 1)
         {
             mvmtX = 0;
         } 
-        else if  (player.position.x <= right.position.x + 0.5f && mvmtX == -1)
+        else if  (player.position.x <= right.position.x + 1.6f && mvmtX == -1)
         {
             mvmtX = 0;
         }
-        else if   (player.position.z <= front.position.z - 0.5f && mvmtY == -1) 
+        if   (player.position.z <= front.position.z + 1.6f && mvmtY == -1) 
         {
             mvmtY = 0;
         }
-        else if    (player.position.z >= back.position.z + 0.5f && mvmtY == 1) 
+        else if    (player.position.z >= back.position.z - 1.6f && mvmtY == 1) 
         {
             mvmtY = 0;
         }
@@ -52,22 +78,50 @@ public class Movement : MonoBehaviour
 
     void MovePlayer() {
         if (mvmtProgress == 0) {
-            Update = (mvmtX*Vector3.right + mvmtY*Vector3.forward);
+            Update = (mvmtX*Right + mvmtY*Forward);
             initialPos = player.position;
             mvmtProgress += 0.001f;
             transition = true;
-        } else if (mvmtProgress>1) {
+        }  
+        else if (mvmtProgress >= 1) 
+        {
             mvmtProgress = 0;
             transition = false;
-        } 
-        else {
-            NewPos = (Smoother.Evaluate(mvmtProgress)*Update*mvmtScale) + initialPos;
+        }
+        else{
             mvmtProgress += mvmtSpeed/60;
+            NewPos = (Smoother.Evaluate(mvmtProgress)*Update*mvmtScale) + initialPos;
             player.position = NewPos;
         }
+        
+    }
+
+    public bool CloseEnough(Transform Curr, Transform Target, float range) {
+        Vector3 target = Target.position;
+        Vector3 current = Curr.position;
+        if (Vector3.Distance(target,current)<=range) {
+            return true;
+        }
+        return false;
+    }
+
+    void CurrentSpot() {
+
+        foreach (PadController padboi in pads) {
+        
+        if (CloseEnough(player,padboi.padTransform,1.5f)) {
+            padboi.spot.intensity = 5000;
+            
+        } else {
+            padboi.spot.intensity = 0;
+            
+        }
+    }
     }
     void FixedUpdate()
     {
+    CurrentSpot();
+     Allign();
      if ( transition || (canMove && isMoving ) ) {
         CheckBounds();
         MovePlayer();
