@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed;
-    public bool isMoving,canMove,transition,isAiming,dashed;
+    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale;
+    public bool isMoving,canMove,transition,isAiming,dashed,jump;
     public Transform player,front,back,left,right,cam;
     public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn,Dashpoint;
-    public AnimationCurve Smoother;
+    public AnimationCurve Smoother,JumpCurve;
     public PadController[] pads;
     public PadController dashpad;
     public GameObject PadContainer;
@@ -38,6 +38,7 @@ public class Movement : MonoBehaviour
         dashed = false;
         Dashpoint = new Vector3 (-1f,-1f,-1f);
         dashpad = pads[0];
+        groundval = player.position.y;
 
     }
 
@@ -128,6 +129,31 @@ public class Movement : MonoBehaviour
          }
          isAiming = true;
     }
+
+    void OnJump(InputValue jumpval) {
+        if (jumpval.Get<float>() == 1f && player.position.y == groundval) {
+            jump = true;
+        }
+    }
+
+    void Jump() {
+        if (jumpprog >= 1f) {
+            jumpprog = 0f;
+            jump = false;
+            Vector3 Defpos = new Vector3 (0f,0f,0f);
+            Defpos.x = player.position.x;
+            Defpos.z = player.position.z;
+            Defpos.y = groundval;
+            player.position = Defpos;
+            return;
+        }
+        Vector3 Jumpupdate = new Vector3 (0f,0f,0f);
+        Jumpupdate.y = jumpscale*JumpCurve.Evaluate(jumpprog);
+        jumpprog += jumpspeed/60;
+        Jumpupdate.x = player.position.x;
+        Jumpupdate.z = player.position.z;
+        player.position = Jumpupdate;
+    }
     void FixedUpdate()
     {
     
@@ -165,6 +191,15 @@ public class Movement : MonoBehaviour
 
      } else if (!isMoving) {
         canMove = true;
+     }
+
+     if (jump) {
+        Jump();
+     } else if (player.position.y != groundval) {
+        player.position = new Vector3 (player.position.x, groundval, player.position.z);
+        jump = false; 
+     } else {
+        jump = false;
      }
 
     }

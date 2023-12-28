@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 32.434097, g: 33.98767, b: 49.34131, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3037,11 +3037,16 @@ MonoBehaviour:
   mvmtScale: 5
   mvmtProgress: 0
   mvmtSpeed: 15
+  groundval: 0
+  jumpprog: 0
+  jumpspeed: 2
+  jumpscale: 5
   isMoving: 0
   canMove: 0
   transition: 0
   isAiming: 0
   dashed: 0
+  jump: 0
   player: {fileID: 468180055}
   front: {fileID: 837492454}
   back: {fileID: 152773268}
@@ -3070,6 +3075,39 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  JumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.504431
+      value: 0.66514504
+      inSlope: -0.059124608
+      outSlope: -0.059124608
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.15796454
+    - serializedVersion: 3
+      time: 0.99438477
+      value: 0.0034561157
       inSlope: 0
       outSlope: 0
       tangentMode: 0
