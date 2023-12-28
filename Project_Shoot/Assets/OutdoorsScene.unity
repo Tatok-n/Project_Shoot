@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 32.44638, g: 34.002747, b: 49.35565, a: 1}
+  m_IndirectSpecularColor: {r: 32.434097, g: 33.98767, b: 49.34131, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -845,7 +845,6 @@ GameObject:
   - component: {fileID: 152773272}
   - component: {fileID: 152773271}
   - component: {fileID: 152773270}
-  - component: {fileID: 152773269}
   m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
@@ -868,18 +867,6 @@ Transform:
   m_Father: {fileID: 56878693}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &152773269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152773267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5a45db02132254eb366148fe43746e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &152773270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3053,6 +3040,8 @@ MonoBehaviour:
   isMoving: 0
   canMove: 0
   transition: 0
+  isAiming: 0
+  dashed: 0
   player: {fileID: 468180055}
   front: {fileID: 837492454}
   back: {fileID: 152773268}
@@ -3065,6 +3054,7 @@ MonoBehaviour:
   Forward: {x: 0, y: 0, z: 0}
   Right: {x: 0, y: 0, z: 0}
   Spawn: {x: 0, y: 0, z: 0}
+  Dashpoint: {x: 0, y: 0, z: 0}
   Smoother:
     serializedVersion: 2
     m_Curve:
@@ -3090,6 +3080,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   pads: []
+  dashpad: {fileID: 0}
   PadContainer: {fileID: 1562072057}
   shooter: {fileID: 1823688470}
 --- !u!1001 &475346533
@@ -4580,7 +4571,6 @@ GameObject:
   - component: {fileID: 837492458}
   - component: {fileID: 837492457}
   - component: {fileID: 837492456}
-  - component: {fileID: 837492455}
   m_Layer: 0
   m_Name: Front
   m_TagString: Untagged
@@ -4603,18 +4593,6 @@ Transform:
   m_Father: {fileID: 56878693}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &837492455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837492453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5a45db02132254eb366148fe43746e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &837492456
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6520,7 +6498,6 @@ GameObject:
   - component: {fileID: 1321761272}
   - component: {fileID: 1321761271}
   - component: {fileID: 1321761270}
-  - component: {fileID: 1321761269}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -6543,18 +6520,6 @@ Transform:
   m_Father: {fileID: 56878693}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1321761269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321761267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5a45db02132254eb366148fe43746e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1321761270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8404,7 +8369,6 @@ GameObject:
   - component: {fileID: 1685308802}
   - component: {fileID: 1685308801}
   - component: {fileID: 1685308800}
-  - component: {fileID: 1685308799}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -8427,18 +8391,6 @@ Transform:
   m_Father: {fileID: 56878693}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1685308799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685308797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5a45db02132254eb366148fe43746e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1685308800
 BoxCollider:
   m_ObjectHideFlags: 0

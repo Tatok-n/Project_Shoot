@@ -6,15 +6,13 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed;
-    public bool isMoving,canMove,transition;
+    public bool isMoving,canMove,transition,isAiming,dashed;
     public Transform player,front,back,left,right,cam;
-
-    public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn;
+    public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn,Dashpoint;
     public AnimationCurve Smoother;
-
     public PadController[] pads;
+    public PadController dashpad;
     public GameObject PadContainer;
-
     public ShootRay shooter;
     
      void OnMove (InputValue movementValue)
@@ -37,6 +35,9 @@ public class Movement : MonoBehaviour
         Forward = Vector3.forward;
         Right = Vector3.right;
         pads = PadContainer.GetComponentsInChildren<PadController>();
+        dashed = false;
+        Dashpoint = new Vector3 (-1f,-1f,-1f);
+        dashpad = pads[0];
 
     }
 
@@ -114,24 +115,49 @@ public class Movement : MonoBehaviour
         if (CloseEnough(player,padboi.padTransform,1.5f)) {
             padboi.spot.intensity = 5000;
             
-        } else {
+        } else if (!isAiming) {
             padboi.spot.intensity = 0;
-            
         }
-    }
+    } 
     }
 
     void OnDash(InputValue Button) {
-        if (Button.Get<float>()==1) {
-            Debug.Log(shooter.Shooter());
-        }
-        
-        
+         if (Button.Get<float>() == 0f) {
+            isAiming = false;
+            return;
+         }
+         isAiming = true;
     }
     void FixedUpdate()
     {
-    CurrentSpot();
+    
      Allign();
+     if (isAiming) {
+        float dist = 100f;
+        Dashpoint = shooter.Shooter();
+        dashpad.spot.intensity = 0;
+        dashpad.spot.color = Color.white;
+        foreach (PadController padboi in pads) {
+            if (Vector3.Distance(padboi.padPos, Dashpoint) < dist) {
+                dist = (Vector3.Distance(padboi.padPos, Dashpoint));
+                dashpad = padboi;
+            } else {
+                padboi.spot.intensity = 0;
+                padboi.spot.color = Color.white;
+            }
+        }
+        dashpad.spot.intensity = 5000;
+        dashpad.spot.color = Color.red;
+     } else if (!isAiming && Dashpoint != new Vector3 (-1f,-1f,-1f)) {
+        player.position = dashpad.padPos;
+        dashpad.spot.color = Color.white;
+        dashpad.spot.intensity = 0;
+        Dashpoint = new Vector3 (-1f,-1f,-1f);
+     }
+
+     CurrentSpot();
+
+
      if ( transition || (canMove && isMoving ) ) {
         CheckBounds();
         MovePlayer();
@@ -140,5 +166,6 @@ public class Movement : MonoBehaviour
      } else if (!isMoving) {
         canMove = true;
      }
+
     }
 }
