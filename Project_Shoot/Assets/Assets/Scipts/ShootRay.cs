@@ -5,6 +5,9 @@ using UnityEngine;
 public class ShootRay : MonoBehaviour
 {
     public Transform Pos;
+    public TargetController TargetBoi;
+
+    
 
 
     // Start is called before the first frame update
@@ -21,6 +24,8 @@ public class ShootRay : MonoBehaviour
         {
 
             if (hit.collider.tag == "Targets") {
+                TargetBoi = hit.collider.GetComponent<TargetController>();
+                TargetBoi.DestroyTheBoi();
                 return 100f;
             }
             
