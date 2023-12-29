@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShootRay : MonoBehaviour
 {
     public Transform Pos;
+    
 
     // Start is called before the first frame update
     
@@ -14,6 +15,16 @@ public class ShootRay : MonoBehaviour
         return hit.point;
     }
     
+    public float Fire() {
+        RaycastHit hit;
+        Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward) , out hit, 100f);
+
+        if (hit.collider.tag == "Pads") {
+            return 1f;
+        }
+        return 0f;
+
+    }
     void Start()
     {
         

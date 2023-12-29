@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale;
+    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale,rotation;
     public bool isMoving,canMove,transition,isAiming,dashed,jump;
     public Transform player,front,back,left,right,cam;
     public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn,Dashpoint;
@@ -47,36 +47,73 @@ public class Movement : MonoBehaviour
         if (angle<=45f || angle >= 315f) { //Looking original Forward
             Forward = Vector3.forward;
             Right = Vector3.right;
+            rotation= 0f;
+            
         } else if (angle >=45f && angle <= 135f) //looking original Right 
         {
             Forward = Vector3.right;
             Right = -Vector3.forward;
+            rotation= 90f;
+            
         } else if (angle >= 135f && angle <= 225) //looking original behind
         {
             Forward = -Vector3.forward;
             Right = -Vector3.right;
+            rotation = 180f;
         } else {
             Forward = -Vector3.right;
             Right = Vector3.forward;
+            rotation = 270f;
         }
     }
 
     void CheckBounds() {
-        if  (player.position.x >= left.position.x - 1.6f && mvmtX == 1)
+        float DirX = 0;
+        float DirY = 0;
+        if (rotation == 0f) {
+            DirX = mvmtX;
+            DirY = mvmtY;
+        } else if (rotation == 90f) {
+            DirX = mvmtY;
+            DirY = -mvmtX;
+        } else if (rotation == 180f) {
+            DirX = -mvmtX;
+            DirY = -mvmtY;
+        } else {
+            DirY = mvmtX;
+            DirX = -mvmtY;
+        }
+        if  (player.position.x >= left.position.x - 1.6f && DirX == 1)
         {
-            mvmtX = 0;
+            if (rotation == 0f || rotation == 180f) {
+                mvmtX = 0;
+            } else {
+                mvmtY = 0;
+            }
         } 
-        else if  (player.position.x <= right.position.x + 1.6f && mvmtX == -1)
+        else if  (player.position.x <= right.position.x + 1.6f && DirX == -1)
         {
-            mvmtX = 0;
+            if (rotation == 0f || rotation == 180f) {
+                mvmtX = 0;
+            } else {
+                mvmtY = 0;
+            }
         }
-        if   (player.position.z <= front.position.z + 1.6f && mvmtY == -1) 
+        if   (player.position.z <= front.position.z + 1.6f && DirY == -1) 
         {
-            mvmtY = 0;
+            if (rotation == 0f || rotation == 180f) {
+                mvmtY = 0;
+            } else {
+                mvmtX = 0;
+            }
         }
-        else if    (player.position.z >= back.position.z - 1.6f && mvmtY == 1) 
+        else if    (player.position.z >= back.position.z - 1.6f && DirY == 1) 
         {
-            mvmtY = 0;
+            if (rotation == 0f || rotation == 180f) {
+                mvmtY = 0;
+            } else {
+                mvmtX = 0;
+            }
         }
     }
 
@@ -115,9 +152,11 @@ public class Movement : MonoBehaviour
         
         if (CloseEnough(player,padboi.padTransform,1.5f)) {
             padboi.spot.intensity = 5000;
+            padboi.Used = true;
             
         } else if (!isAiming) {
             padboi.spot.intensity = 0;
+
         }
     } 
     }
@@ -154,30 +193,29 @@ public class Movement : MonoBehaviour
         Jumpupdate.z = player.position.z;
         player.position = Jumpupdate;
     }
-    void FixedUpdate()
+    
+    void FixedUpdate() 
     {
     
      Allign();
      if (isAiming) {
         float dist = 100f;
         Dashpoint = shooter.Shooter();
-        dashpad.spot.intensity = 0;
-        dashpad.spot.color = Color.white;
+        dashpad.Used = false;
         foreach (PadController padboi in pads) {
             if (Vector3.Distance(padboi.padPos, Dashpoint) < dist) {
                 dist = (Vector3.Distance(padboi.padPos, Dashpoint));
                 dashpad = padboi;
             } else {
-                padboi.spot.intensity = 0;
-                padboi.spot.color = Color.white;
+                dashpad.Used = false;
             }
         }
+        dashpad.Used = true;
         dashpad.spot.intensity = 5000;
         dashpad.spot.color = Color.red;
      } else if (!isAiming && Dashpoint != new Vector3 (-1f,-1f,-1f)) {
         player.position = dashpad.padPos;
-        dashpad.spot.color = Color.white;
-        dashpad.spot.intensity = 0;
+        dashpad.Used = false;
         Dashpoint = new Vector3 (-1f,-1f,-1f);
      }
 
