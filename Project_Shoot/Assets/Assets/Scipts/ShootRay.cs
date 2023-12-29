@@ -6,6 +6,9 @@ public class ShootRay : MonoBehaviour
 {
     public Transform Pos;
     public TargetController TargetBoi;
+    public Scoring ScoreBoi;
+
+
 
     
 
@@ -24,9 +27,11 @@ public class ShootRay : MonoBehaviour
         {
 
             if (hit.collider.tag == "Targets") {
+                float points = 0f;
                 TargetBoi = hit.collider.GetComponent<TargetController>();
+                points  = (ScoreBoi.ScoreCurve.Evaluate(TargetBoi.LifeTime/TargetBoi.MaxTime))*ScoreBoi.TargetPoints;
                 TargetBoi.DestroyTheBoi();
-                return 100f;
+                return points;
             }
             
 

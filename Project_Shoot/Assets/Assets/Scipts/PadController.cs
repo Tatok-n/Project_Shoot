@@ -16,7 +16,7 @@ public class PadController : MonoBehaviour
     }
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("A");
+        //EndGame
     }
     // Update is called once per frame
     void FixedUpdate()
