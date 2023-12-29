@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7724654706381055090
+--- !u!114 &-4556356030864931975
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
-  m_Name: 
+  m_Name: PhysicallyBasedSky
   m_EditorClassIdentifier: 
   active: 1
   rotation:
@@ -87,10 +87,10 @@ MonoBehaviour:
     m_Value: 0
   numberOfBounces:
     m_OverrideState: 0
-    m_Value: 8
+    m_Value: 3
   groundTint:
-    m_OverrideState: 1
-    m_Value: {r: 0.122641504, g: 0.1043775, b: 0.09313812, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.4, g: 0.25, b: 0.15, a: 1}
   groundColorTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -236,9 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1142777632297148762}
-  - {fileID: -7724654706381055090}
   - {fileID: -4151792930034644520}
   - {fileID: 7642060734654139733}
+  - {fileID: -4556356030864931975}
 --- !u!114 &1142777632297148762
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -19,7 +19,7 @@ public class PadController : MonoBehaviour
         Debug.Log("A");
     }
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (!Used) {
             spot.intensity = 0f;

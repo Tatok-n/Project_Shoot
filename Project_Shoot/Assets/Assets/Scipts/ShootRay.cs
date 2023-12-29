@@ -5,23 +5,28 @@ using UnityEngine;
 public class ShootRay : MonoBehaviour
 {
     public Transform Pos;
-    
+
 
     // Start is called before the first frame update
     
     public Vector3 Shooter() {
         RaycastHit hit;
-        Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward), out hit,50f);
+        Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward), out hit);
         return hit.point;
     }
     
     public float Fire() {
         RaycastHit hit;
-        Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward) , out hit, 100f);
+        if (Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward) , out hit, 100f))
+        {
 
-        if (hit.collider.tag == "Pads") {
-            return 1f;
+            if (hit.collider.tag == "Targets") {
+                return 100f;
+            }
+            
+
         }
+
         return 0f;
 
     }

@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public PadController dashpad;
     public GameObject PadContainer;
     public ShootRay shooter;
+    public Color DashColor;
     
      void OnMove (InputValue movementValue)
     {
@@ -155,7 +156,7 @@ public class Movement : MonoBehaviour
             padboi.Used = true;
             
         } else if (!isAiming) {
-            padboi.spot.intensity = 0;
+            padboi.Used = false;
 
         }
     } 
@@ -207,12 +208,12 @@ public class Movement : MonoBehaviour
                 dist = (Vector3.Distance(padboi.padPos, Dashpoint));
                 dashpad = padboi;
             } else {
-                dashpad.Used = false;
+                padboi.Used = false;
             }
         }
         dashpad.Used = true;
         dashpad.spot.intensity = 5000;
-        dashpad.spot.color = Color.red;
+        dashpad.spot.color = DashColor;
      } else if (!isAiming && Dashpoint != new Vector3 (-1f,-1f,-1f)) {
         player.position = dashpad.padPos;
         dashpad.Used = false;
