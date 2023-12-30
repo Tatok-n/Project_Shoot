@@ -97,6 +97,11 @@ public class PadController : MonoBehaviour
         if (Life>= 1.5f) {
             Topulse = false;
             Used = false;
+            Life = 0f;
+            recBack = false;
+            recFront = false;
+            recLeft = false;
+            recRight = false;
             if (touchingPlayer) {
                 score.GameOver();
             }

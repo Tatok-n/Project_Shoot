@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spot: {fileID: 2258175941321748306}
   Life: 0
-  Speed: 3
+  Speed: 2
   Strength: 10000
   padTransform: {fileID: 4801074733922905636}
   frontemitter: {fileID: 8945463746736789897}

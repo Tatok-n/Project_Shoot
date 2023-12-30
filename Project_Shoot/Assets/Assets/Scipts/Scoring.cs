@@ -18,6 +18,8 @@ public class Scoring : MonoBehaviour
     public Vector3[] TargetPos;
     public bool spawnOnPoints;
 
+    public GunController gun;
+
     public TextMeshProUGUI ScoreUI,MissedUI;
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,8 @@ public class Scoring : MonoBehaviour
     void OnFire() {
         score += shooter.Fire();
         UpdateUI();
+        gun.fire = true;
+        gun.ShootingTime = 0f;
     }
     // Update is called once per frame
     void Update()
