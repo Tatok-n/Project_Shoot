@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 3a637696bf9654346854cb6f62d54f09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,3 +113,5 @@ MonoBehaviour:
   Player: {fileID: 0}
   ThisBoi: {fileID: 3593995211952343686}
   ScoreBoi: {fileID: 0}
+  MaxTime: 0
+  LifeTime: 0

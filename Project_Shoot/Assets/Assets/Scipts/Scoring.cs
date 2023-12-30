@@ -42,10 +42,14 @@ public class Scoring : MonoBehaviour
         }
 
         if (missedTargets>=maxTargetsmissed) {
-            NormalUI.SetActive(false);
-            GameOverScreen.SetActive(true);
+            GameOver();
         }
         
+    }
+
+    public void GameOver() {
+            NormalUI.SetActive(false);
+            GameOverScreen.SetActive(true);
     }
 
     public void spawnTargets(int number) {
