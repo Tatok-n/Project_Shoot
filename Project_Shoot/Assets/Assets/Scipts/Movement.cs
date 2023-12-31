@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale,rotation;
+    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale,rotation,TimeSincePulse;
     public bool isMoving,canMove,transition,isAiming,dashed,jump;
     public Transform player,front,back,left,right,cam;
     public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn,Dashpoint;
@@ -34,6 +34,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TimeSincePulse = 0f;
         player.position = Spawn;
         Forward = Vector3.forward;
         Right = Vector3.right;
@@ -250,6 +251,15 @@ public class Movement : MonoBehaviour
 
      if (gun.move == true) {
         gun.MoveAnimation();
+     }
+
+     TimeSincePulse += Time.deltaTime;
+     if (TimeSincePulse >= 7.5f) {
+        TimeSincePulse = 0f;
+        int randpick = 0;
+        System.Random rnd = new System.Random();
+        randpick = rnd.Next(pads.Length);
+        pads[randpick].Topulse = true;
      }
 
     }

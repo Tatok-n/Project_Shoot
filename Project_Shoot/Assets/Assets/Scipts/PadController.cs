@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PadController : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PadController : MonoBehaviour
     public Movement mov;
 
     public Scoring score;
+
+    public VisualEffect pulsefx;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +86,7 @@ public class PadController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+    
         if (!Used) {
             spot.intensity = 0f;
             spot.color = Color.white;
@@ -105,6 +109,7 @@ public class PadController : MonoBehaviour
             recFront = false;
             recLeft = false;
             recRight = false;
+            pulsefx.Play();
             if (touchingPlayer) {
                 score.GameOver();
             }
