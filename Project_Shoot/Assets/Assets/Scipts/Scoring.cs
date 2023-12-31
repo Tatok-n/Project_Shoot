@@ -21,6 +21,8 @@ public class Scoring : MonoBehaviour
     public GunController gun;
 
     public TextMeshProUGUI ScoreUI,MissedUI;
+    public GameObject ShootingAnimation;
+    public Transform ShootingPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class Scoring : MonoBehaviour
         UpdateUI();
         gun.fire = true;
         gun.ShootingTime = 0f;
+        Instantiate(ShootingAnimation, ShootingPos.position, ShootingPos.rotation);
     }
     // Update is called once per frame
     void Update()

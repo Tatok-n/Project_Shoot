@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class GunController : MonoBehaviour
     
@@ -9,9 +10,12 @@ public class GunController : MonoBehaviour
     public Movement player;
     public AnimationCurve ShootingCurve,MovingCurve;
     public bool fire,move;
-    public Transform gun,cam;
+    public Transform gun,cam,shooter,originalPos;
     public Vector3 originalRot, newPos,newRot,offset,MovPos;
     public float ShootingTime,ShootingSpeed,ShootingScale,rotScale,MovingTime,MovingSpeed,MovingScale,Xmov,ZMov;
+    public VisualEffect  gunanimation;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -52,8 +56,8 @@ public class GunController : MonoBehaviour
     {
         if (fire) {
             FireAnimation();
+            
         }
-
         
     }
 }
