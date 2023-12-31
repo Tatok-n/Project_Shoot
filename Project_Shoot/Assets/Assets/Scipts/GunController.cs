@@ -8,14 +8,14 @@ public class GunController : MonoBehaviour
 
     public Movement player;
     public AnimationCurve ShootingCurve,MovingCurve;
-    public bool fire;
+    public bool fire,move;
     public Transform gun,cam;
-    public Vector3 originalPos,originalRot, newPos,newRot,offset;
-    public float ShootingTime,ShootingSpeed,ShootingScale,rotScale,MovingTime,MovingSpeed,MovingScale;
+    public Vector3 originalRot, newPos,newRot,offset,MovPos;
+    public float ShootingTime,ShootingSpeed,ShootingScale,rotScale,MovingTime,MovingSpeed,MovingScale,Xmov,ZMov;
     // Start is called before the first frame update
     void Start()
     {
-        originalPos = gun.position;
+        
         originalRot= gun.localEulerAngles;
         offset = gun.localPosition - cam.localPosition;
     }
@@ -35,11 +35,25 @@ public class GunController : MonoBehaviour
             
         }
     }
+
+    public void MoveAnimation() {
+        MovPos = new Vector3 ((cam.localPosition + offset).x + Xmov*MovingCurve.Evaluate(MovingTime)*MovingScale, (cam.localPosition + offset).y , (cam.localPosition + offset).z + ZMov*MovingCurve.Evaluate(MovingTime)*MovingScale);
+        gun.transform.localPosition = MovPos;
+        if (MovingTime < 1f) {
+            MovingTime += MovingSpeed/60;
+        } else {
+            move = false;
+            gun.localPosition = cam.localPosition + offset;
+            
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         if (fire) {
             FireAnimation();
         }
+
+        
     }
 }

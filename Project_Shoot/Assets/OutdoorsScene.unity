@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 29.161358, g: 15.911087, b: 13.683731, a: 1}
+  m_IndirectSpecularColor: {r: 28.71741, g: 15.683974, b: 13.4683075, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10965,21 +10965,21 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.13140869
       value: 0.8442497
-      inSlope: 20.920135
-      outSlope: 20.920135
+      inSlope: 12.93276
+      outSlope: 12.93276
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.04722868
-      outWeight: 0
+      outWeight: 0.021169849
     - serializedVersion: 3
-      time: 0.28918317
-      value: -0.2286317
-      inSlope: 1.5241688
-      outSlope: 1.5241688
+      time: 0.724962
+      value: -0.16687517
+      inSlope: 7.3759923
+      outSlope: 7.3759923
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.49349013
-      outWeight: 0
+      inWeight: 0.16194107
+      outWeight: 0.0702644
     - serializedVersion: 3
       time: 1.000106
       value: -0.01330927
@@ -10993,20 +10993,23 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   fire: 0
+  move: 0
   gun: {fileID: 543450653343287616}
   cam: {fileID: 1560644653}
-  originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0}
   newPos: {x: 0, y: 0, z: 0}
   newRot: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
+  MovPos: {x: 0, y: 0, z: 0}
   ShootingTime: 0
   ShootingSpeed: 1
   ShootingScale: 1
   rotScale: 50
   MovingTime: 0
-  MovingSpeed: 0
-  MovingScale: 0
+  MovingSpeed: 3
+  MovingScale: 1
+  Xmov: 0
+  ZMov: 0
 --- !u!1001 &6366990626192202769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11153,6 +11156,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7741192915596329337, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 3469287837326903014}
     - target: {fileID: 7741192915596329337, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: back

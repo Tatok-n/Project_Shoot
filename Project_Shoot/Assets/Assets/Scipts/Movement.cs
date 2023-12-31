@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     public GameObject PadContainer;
     public ShootRay shooter;
     public Color DashColor;
+
+    public GunController gun;
     
      void OnMove (InputValue movementValue)
     {
@@ -120,7 +122,7 @@ public class Movement : MonoBehaviour
 
     void MovePlayer() {
         if (mvmtProgress == 0) {
-            Update = (mvmtX*Right + mvmtY*Forward);
+            Update = mvmtX*Right + mvmtY*Forward;
             initialPos = player.position;
             mvmtProgress += 0.001f;
             transition = true;
@@ -239,6 +241,17 @@ public class Movement : MonoBehaviour
         jump = false; 
      } else {
         jump = false;
+     }
+
+     if (mvmtX!= 0 || mvmtY!= 0) {
+        gun.move = true;
+        gun.MovingTime = 0;
+        gun.Xmov = mvmtX;
+        gun.ZMov = mvmtY;
+     }
+
+     if (gun.move == true) {
+        gun.MoveAnimation();
      }
 
     }
