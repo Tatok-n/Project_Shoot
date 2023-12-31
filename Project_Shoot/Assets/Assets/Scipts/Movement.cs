@@ -140,10 +140,8 @@ public class Movement : MonoBehaviour
         
     }
 
-    public bool CloseEnough(Transform Curr, Transform Target, float range) {
-        Vector3 target = Target.position;
-        Vector3 current = Curr.position;
-        if (Vector3.Distance(target,current)<=range) {
+    public bool CloseEnough(Vector3 Curr, Vector3 Target, float range) {
+        if (Vector3.Distance(Curr,Target)<=range) {
             return true;
         }
         return false;
@@ -153,7 +151,7 @@ public class Movement : MonoBehaviour
 
         foreach (PadController padboi in pads) {
         
-        if (CloseEnough(player,padboi.padTransform,1.5f)) {
+        if (CloseEnough(player.position,padboi.padTransform.position,1.5f)) {
             padboi.spot.intensity = 5000;
             padboi.Used = true;
             

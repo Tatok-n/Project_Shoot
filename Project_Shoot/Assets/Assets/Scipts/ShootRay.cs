@@ -8,6 +8,8 @@ public class ShootRay : MonoBehaviour
     public TargetController TargetBoi;
     public Scoring ScoreBoi;
 
+    public GameObject explosion;
+
 
 
     
@@ -24,8 +26,8 @@ public class ShootRay : MonoBehaviour
     public float Fire() {
         RaycastHit hit;
         if (Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward) , out hit, 100f))
-        {
-
+        {   
+            Instantiate(explosion, hit.point, Pos.rotation);
             if (hit.collider.tag == "Targets") {
                 float points = 0f;
                 TargetBoi = hit.collider.GetComponent<TargetController>();

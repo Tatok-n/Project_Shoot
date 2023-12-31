@@ -13,6 +13,8 @@ public class PadController : MonoBehaviour
     public AnimationCurve ActionCurve;
     public PadController front,back,left,right;
 
+    public Movement mov;
+
     public Scoring score;
     // Start is called before the first frame update
     void Start()
@@ -68,12 +70,13 @@ public class PadController : MonoBehaviour
         if (other.tag == "Player") {
             touchingPlayer = true;
             score = other.GetComponentInParent<Scoring>();
+            mov = other.GetComponentInParent<Movement>();
             
         }
     }
 
     void OnTriggerExit(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player" && !mov.CloseEnough(padPos, new Vector3 (mov.player.position.x,mov.groundval,mov.player.position.z), 1f)) {
             touchingPlayer = false;
         }
     }
