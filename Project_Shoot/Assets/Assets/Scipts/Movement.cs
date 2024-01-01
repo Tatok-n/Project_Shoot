@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale,rotation,TimeSincePulse;
+    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale,rotation,TimeSincePulse,PulseInterval;
     public bool isMoving,canMove,transition,isAiming,dashed,jump;
     public Transform player,front,back,left,right,cam;
     public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn,Dashpoint;
@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     public Color DashColor;
 
     public GunController gun;
-    
+    public TurretController[] turrets;
      void OnMove (InputValue movementValue)
     {
         
@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start()
-    {
+    {   turrets = PadContainer.GetComponentsInChildren<TurretController>();
         TimeSincePulse = 0f;
         player.position = Spawn;
         Forward = Vector3.forward;
@@ -87,7 +87,7 @@ public class Movement : MonoBehaviour
             DirY = mvmtX;
             DirX = -mvmtY;
         }
-        if  (player.position.x >= left.position.x - 1.6f && DirX == 1)
+        if  (player.position.x >= left.position.x - 4.6f && DirX == 1)
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtX = 0;
@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour
                 mvmtY = 0;
             }
         } 
-        else if  (player.position.x <= right.position.x + 1.6f && DirX == -1)
+        else if  (player.position.x <= right.position.x + 4.6f && DirX == -1)
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtX = 0;
@@ -103,7 +103,7 @@ public class Movement : MonoBehaviour
                 mvmtY = 0;
             }
         }
-        if   (player.position.z <= front.position.z + 1.6f && DirY == -1) 
+        if   (player.position.z <= front.position.z + 4.6f && DirY == -1) 
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtY = 0;
@@ -111,7 +111,7 @@ public class Movement : MonoBehaviour
                 mvmtX = 0;
             }
         }
-        else if    (player.position.z >= back.position.z - 1.6f && DirY == 1) 
+        else if    (player.position.z >= back.position.z - 4.6f && DirY == 1) 
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtY = 0;
@@ -254,7 +254,7 @@ public class Movement : MonoBehaviour
      }
 
      TimeSincePulse += Time.deltaTime;
-     if (TimeSincePulse >= 7.5f) {
+     if (TimeSincePulse >= PulseInterval) {
         TimeSincePulse = 0f;
         int randpick = 0;
         System.Random rnd = new System.Random();

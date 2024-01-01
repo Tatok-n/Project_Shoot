@@ -39,6 +39,7 @@ Transform:
   - {fileID: 8945463746736789897}
   - {fileID: 2437682077082409439}
   - {fileID: 8013848641819444017}
+  - {fileID: 2255330057371710244}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -108,11 +109,15 @@ MonoBehaviour:
   Life: 0
   Speed: 2
   Strength: 10000
+  ScaleX: 0
+  ScaleY: 0
+  ScaleZ: 0
   padTransform: {fileID: 4801074733922905636}
   frontemitter: {fileID: 8945463746736789897}
   leftemitter: {fileID: 4328531173100505776}
   rightemitter: {fileID: 7541397505898044547}
   backemitter: {fileID: 2437682077082409439}
+  TurretSpawn: {fileID: 2255330057371710244}
   padPos: {x: 0, y: 0, z: 0}
   Used: 0
   recFront: 0
@@ -121,6 +126,7 @@ MonoBehaviour:
   recLeft: 0
   Topulse: 0
   touchingPlayer: 0
+  spawnedturret: 0
   ActionColor: {r: 1, g: 0.09920779, b: 0, a: 0}
   ActionCurve:
     serializedVersion: 2
@@ -195,8 +201,10 @@ MonoBehaviour:
   back: {fileID: 0}
   left: {fileID: 0}
   right: {fileID: 0}
+  Turret: {fileID: 4686119856263499675, guid: 8e09bd534cfb0d642b9dab86d2baa055, type: 3}
   mov: {fileID: 0}
   score: {fileID: 0}
+  turretBoi: {fileID: 0}
   pulsefx: {fileID: 4846345953743951218}
 --- !u!54 &3155332914147479493
 Rigidbody:
@@ -206,13 +214,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100628343219672246}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1e+9
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &1262281200450254100
 BoxCollider:
@@ -222,11 +230,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100628343219672246}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3, y: 2.393969, z: 1.2649443}
-  m_Center: {x: 0.000000059604645, y: 0.5815769, z: -0.0017434359}
+  m_Size: {x: 1.3, y: 5.696471, z: 1.2649443}
+  m_Center: {x: 0.000000059604645, y: 2.2328289, z: -0.0017434359}
 --- !u!1 &2639974275919647431
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +469,37 @@ Transform:
   - {fileID: 4356563371895193465}
   m_Father: {fileID: 4801074733922905636}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6690245992214589990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2255330057371710244}
+  m_Layer: 0
+  m_Name: TurretSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2255330057371710244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6690245992214589990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4801074733922905636}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7683562725035062946
 GameObject:

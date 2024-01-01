@@ -8,7 +8,7 @@ using TMPro;
 
 public class Scoring : MonoBehaviour
 {
-    public float minx,minz,maxx,maxz,spacing,TargetLife;
+    public float minx,minz,maxx,maxz,spacing,TargetLife,turretCounter, turretLimit;
     public ShootRay shooter;
 
     public int numTargets,missedTargets,maxTargetsmissed;
@@ -17,15 +17,16 @@ public class Scoring : MonoBehaviour
     public AnimationCurve ScoreCurve;
     public Vector3[] TargetPos;
     public bool spawnOnPoints;
-
     public GunController gun;
-
     public TextMeshProUGUI ScoreUI,MissedUI;
     public GameObject ShootingAnimation;
     public Transform ShootingPos;
+    public TurretController[] turrets;
+    public Movement mov;
     // Start is called before the first frame update
     void Start()
     {
+        
         score = 0f;
         spawnTargets(numTargets);
         TargetPos = new Vector3[numTargets];
@@ -40,6 +41,9 @@ public class Scoring : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (turrets.Length == 0) {
+            turrets = mov.turrets;
+        }
         if (!spawnOnPoints) {
             SpawnTime += Time.deltaTime;
             if (SpawnTime>=TargetLife) {
@@ -50,6 +54,17 @@ public class Scoring : MonoBehaviour
 
         if (missedTargets>=maxTargetsmissed) {
             GameOver();
+        }
+
+        turretCounter += Time.deltaTime;
+        if (turretCounter>=turretLimit) {
+            System.Random rnd1 = new System.Random();
+            TurretController tur = turrets[rnd1.Next(0,turrets.Length-1)];
+            if (tur.Shoot) {
+                tur =  turrets[rnd1.Next(0,turrets.Length)];
+            }
+            tur.Fire();
+            turretCounter = 0f;
         }
         
     }
