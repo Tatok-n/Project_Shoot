@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour
 
     public GunController gun;
     public TurretController[] turrets;
+
+    public Pause PauseHandler;
      void OnMove (InputValue movementValue)
     {
         
@@ -45,7 +47,9 @@ public class Movement : MonoBehaviour
         groundval = player.position.y;
 
     }
-
+    void OnPause(InputValue Button) {
+        PauseHandler.StartPauseMenu();
+    }
     void Allign() {
         float angle = cam.eulerAngles.y;
         if (angle<=45f || angle >= 315f) { //Looking original Forward
