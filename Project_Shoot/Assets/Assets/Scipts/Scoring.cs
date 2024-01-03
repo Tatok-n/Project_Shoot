@@ -12,13 +12,13 @@ public class Scoring : MonoBehaviour
     public ShootRay shooter;
 
     public int numTargets,missedTargets,maxTargetsmissed;
-    public float TargetPoints,score,SpawnTime;
+    public float TargetPoints,score,SpawnTime,CurrentHighScore;
     public GameObject TargetBoi,NormalUI,GameOverScreen;
     public AnimationCurve ScoreCurve;
     public Vector3[] TargetPos;
     public bool spawnOnPoints;
     public GunController gun;
-    public TextMeshProUGUI ScoreUI,MissedUI;
+    public TextMeshProUGUI ScoreUI,MissedUI,HighScore;
     public GameObject ShootingAnimation;
     public Transform ShootingPos;
     public TurretController[] turrets;
@@ -70,8 +70,13 @@ public class Scoring : MonoBehaviour
     }
 
     public void GameOver() {
+        if (PlayerPrefs.GetFloat("HighScore")!= null && score>PlayerPrefs.GetFloat("HighScore")) {
+                PlayerPrefs.SetFloat("HighScore", score);
+            }
+            HighScore.text = "Current High Score : " + Mathf.Round(PlayerPrefs.GetFloat("HighScore")).ToString();
             NormalUI.SetActive(false);
             GameOverScreen.SetActive(true);
+            
     }
 
     public void spawnTargets(int number) {
@@ -115,7 +120,7 @@ public class Scoring : MonoBehaviour
     }
 
     public void UpdateUI () {
-        ScoreUI.text = "Current score: " + (Mathf.Round(score)).ToString();
+        ScoreUI.text = "Current score: " + Mathf.Round(score).ToString();
         MissedUI.text = "Missed targets: " + (missedTargets).ToString();
     }
 }
