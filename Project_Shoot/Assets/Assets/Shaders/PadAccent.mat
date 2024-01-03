@@ -10,6 +10,8 @@ Material:
   m_Name: PadAccent
   m_Shader: {fileID: -6465566751694194690, guid: 457d4e94407433040b22d33219c7381a,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords:
@@ -26,6 +28,7 @@ Material:
   - TransparentBackface
   - RayTracingPrepass
   - MOTIONVECTORS
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -97,11 +100,23 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0b6c0a57d07e45d4889b61a7ddd0d2ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3fff2f2809b4401fb6ee547a319d79e5_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 0b6c0a57d07e45d4889b61a7ddd0d2ca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_7ed783e5892e4623b58e677e6b6aa2c2_Texture_1:
         m_Texture: {fileID: 2800000, guid: ddf4a1aff84019a4c9c98f74c1c6d9d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7ed783e5892e4623b58e677e6b6aa2c2_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: ddf4a1aff84019a4c9c98f74c1c6d9d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_ce666d7d72f04744b4772715d81a3fd9_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7dcbdabe3b8f0c74cb9e92afc744b000, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_ce666d7d72f04744b4772715d81a3fd9_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 7dcbdabe3b8f0c74cb9e92afc744b000, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -189,6 +204,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
+    - _ExcludeFromTUAndAA: 0
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -235,10 +251,10 @@ Material:
     - _StencilRefGBuffer: 10
     - _StencilRefMV: 40
     - _StencilWriteMask: 6
-    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
-    - _StencilWriteMaskGBuffer: 14
-    - _StencilWriteMaskMV: 40
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _SurfaceType: 0
@@ -293,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 12
+  version: 13
   hdPluginSubTargetMaterialVersions:
     m_Keys: []
     m_Values: 
