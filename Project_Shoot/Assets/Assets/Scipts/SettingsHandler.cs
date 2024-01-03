@@ -1,0 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class SettingsHandler : MonoBehaviour
+{
+    public TMP_Dropdown PerformancePreset, SSR,SSSAO,GI;
+    public Slider Bloom,Sens;
+    public Toggle Chroma;
+
+    public GameObject Settings,PreviousMenu;
+    // Start is called before the first frame update
+
+   
+   public void SetAOPref() {
+    PlayerPrefs.SetInt("AO", SSSAO.value);
+   }
+
+   public void SetOverallPref() {
+    PlayerPrefs.SetInt("Preset", PerformancePreset.value);
+   }
+    public void SetSens() {
+        PlayerPrefs.SetFloat("Sens",Sens.value);
+    }
+
+    public void SetBloom () {
+        PlayerPrefs.SetFloat("Bloom", Bloom.value);
+    }
+    public void SetSSR () {
+        PlayerPrefs.SetInt("SSR", SSR.value);
+    }
+
+    public void GlobalIllumi () {
+        PlayerPrefs.SetInt("GI", GI.value);
+    }
+
+    public void SetChroma() {
+        if (Chroma.isOn) {
+        PlayerPrefs.SetInt("Chroma", 1);
+        } else {
+        PlayerPrefs.SetInt("Chroma", 0);
+        }
+        
+    }
+
+    public void InitiateMenus() {
+        Settings.SetActive(true);
+        PreviousMenu.SetActive(false);
+        PerformancePreset.value = PlayerPrefs.GetInt("Preset", 1);
+        SSR.value = PlayerPrefs.GetInt("SSR", 0);
+        GI.value = PlayerPrefs.GetInt("GI", 3);
+        SSSAO.value =  PlayerPrefs.GetInt("AO",2);
+        Bloom.value = PlayerPrefs.GetFloat("Bloom", 0.69f);
+        Sens.value = PlayerPrefs.GetFloat("Sens", 0.11f);
+        if (PlayerPrefs.GetInt("Chroma",1) == 1) {
+            Chroma.isOn = true;
+        } else {
+            Chroma.isOn = false;
+        }
+
+    }
+}
