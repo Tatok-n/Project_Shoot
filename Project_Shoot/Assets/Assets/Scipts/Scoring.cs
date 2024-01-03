@@ -70,7 +70,7 @@ public class Scoring : MonoBehaviour
     }
 
     public void GameOver() {
-        if (PlayerPrefs.GetFloat("HighScore",0f)!= 0f && score>PlayerPrefs.GetFloat("HighScore")) {
+        if (score>PlayerPrefs.GetFloat("HighScore",0f)) {
                 PlayerPrefs.SetFloat("HighScore", score);
             }
             HighScore.text = "Current High Score : " + Mathf.Round(PlayerPrefs.GetFloat("HighScore")).ToString();

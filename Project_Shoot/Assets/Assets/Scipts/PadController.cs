@@ -21,7 +21,7 @@ public class PadController : MonoBehaviour
     public VisualEffect pulsefx;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         TurretSpawn.position = padTransform.position;
         TurretSpawn.rotation = padTransform.rotation;

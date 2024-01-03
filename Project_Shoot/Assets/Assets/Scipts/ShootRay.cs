@@ -18,14 +18,18 @@ public class ShootRay : MonoBehaviour
     // Start is called before the first frame update
     
     public Vector3 Shooter() {
+        int layerMask = 1 << 6;
+        layerMask = ~layerMask;
         RaycastHit hit;
-        Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward), out hit);
+        Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward), out hit,100f, layerMask);
         return hit.point;
     }
     
     public float Fire() {
         RaycastHit hit;
-        if (Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward) , out hit, 100f))
+        int layerMask = 1 << 6;
+        layerMask = ~layerMask;
+        if (Physics.Raycast(Pos.position, transform.TransformDirection(Vector3.forward) , out hit, 100f, layerMask))
         {   
             Instantiate(explosion, hit.point, Pos.rotation);
             if (hit.collider.tag == "Targets") {
