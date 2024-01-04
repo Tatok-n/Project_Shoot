@@ -15,7 +15,10 @@ public class SettingsHandler : MonoBehaviour
     
     // Start is called before the first frame update
 
-   
+   void Awake() {
+    GetBloomDisplay();
+    GetSensDisplay();
+   }
    public void SetAOPref() {
     PlayerPrefs.SetInt("AO", SSSAO.value);
    }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-    public GameObject PauseMenu;
+    public GameObject PauseMenu,SettingsMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +29,10 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         PauseMenu.SetActive(false);
     }
-
+    public void EnterSettings() {
+        PauseMenu.SetActive(false);
+        SettingsMenu.SetActive(true);
+}
     public void Mainmenu() {
         SceneManager.LoadScene("IntroScreen");
     }

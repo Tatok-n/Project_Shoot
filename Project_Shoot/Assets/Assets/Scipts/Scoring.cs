@@ -74,6 +74,7 @@ public class Scoring : MonoBehaviour
                 PlayerPrefs.SetFloat("HighScore", score);
             }
             HighScore.text = "Current High Score : " + Mathf.Round(PlayerPrefs.GetFloat("HighScore")).ToString();
+            mov.PauseHandler.PauseMenu.SetActive(false);
             NormalUI.SetActive(false);
             GameOverScreen.SetActive(true);
             

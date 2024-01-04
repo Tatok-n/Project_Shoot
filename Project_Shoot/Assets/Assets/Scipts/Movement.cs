@@ -49,6 +49,7 @@ public class Movement : MonoBehaviour
     }
     void OnPause(InputValue Button) {
         PauseHandler.StartPauseMenu();
+        
     }
     void Allign() {
         float angle = cam.eulerAngles.y;
