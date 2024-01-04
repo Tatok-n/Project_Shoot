@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
 public class SettingsHandler : MonoBehaviour
 {
     public TMP_Dropdown PerformancePreset, SSR,SSSAO,GI;
@@ -11,6 +11,8 @@ public class SettingsHandler : MonoBehaviour
     public Toggle Chroma;
 
     public GameObject Settings,PreviousMenu;
+    public TextMeshProUGUI BloomUI,SensUI;
+    
     // Start is called before the first frame update
 
    
@@ -43,6 +45,14 @@ public class SettingsHandler : MonoBehaviour
         PlayerPrefs.SetInt("Chroma", 0);
         }
         
+    }
+
+     public void GetBloomDisplay() {
+        BloomUI.text = Math.Round(PlayerPrefs.GetFloat(("Bloom"),0.15f),2).ToString();
+    }
+
+    public void GetSensDisplay() {
+        SensUI.text = Math.Round(PlayerPrefs.GetFloat(("Sens"),0.15f),2).ToString();
     }
 
     public void InitiateMenus() {

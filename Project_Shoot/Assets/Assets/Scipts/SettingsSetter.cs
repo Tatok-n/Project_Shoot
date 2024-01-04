@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+using TMPro;
+using System;
 
 
 
@@ -10,6 +12,7 @@ public class SettingsSetter : MonoBehaviour
 {  
     public VolumeProfile  volumes;
     public FirstPersonCameraRotation cameracont;
+    
     
     // Start is called before the first frame update
     void Awake()
@@ -118,6 +121,7 @@ public class SettingsSetter : MonoBehaviour
         }
     }
 
+   
     void SetChroma(int param) {
         ChromaticAberration chroma;
         if (volumes.TryGet(out chroma)) {
