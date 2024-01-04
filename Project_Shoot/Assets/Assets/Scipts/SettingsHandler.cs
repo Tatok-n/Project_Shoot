@@ -61,4 +61,19 @@ public class SettingsHandler : MonoBehaviour
         }
 
     }
+
+    public void saveValues() {
+        PlayerPrefs.SetInt("Preset", PerformancePreset.value);
+        PlayerPrefs.SetInt("SSR", SSR.value);
+        PlayerPrefs.SetInt("GI", GI.value);
+        PlayerPrefs.SetInt("AO",SSSAO.value);
+        PlayerPrefs.SetFloat("Bloom", Bloom.value);
+        PlayerPrefs.SetFloat("Sens", Sens.value);
+        if (Chroma.isOn) {
+            PlayerPrefs.SetInt("Chroma",1);
+            
+        } else {
+            PlayerPrefs.SetInt("Chroma",0);
+        }
+    }
 }
