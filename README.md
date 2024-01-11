@@ -5,7 +5,7 @@
 
 Key features :
 - Fast paced movement
-- Customisale graphics settings
+- Customisable graphics settings
 - Custom Assets
 - Multiple difficulty settings (in progress)
 - Fully custom level generation parameters (in progress)
