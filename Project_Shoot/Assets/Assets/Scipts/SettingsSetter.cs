@@ -17,15 +17,7 @@ public class SettingsSetter : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
-       
         SetSettings();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void SetPresets() {
@@ -120,7 +112,6 @@ public class SettingsSetter : MonoBehaviour
             bloom.intensity.value = parameters;
         }
     }
-
    
     void SetChroma(int param) {
         ChromaticAberration chroma;

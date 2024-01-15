@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public AnimationCurve Smoother,JumpCurve;
     public PadController[] pads;
     public PadController dashpad;
-    public GameObject PadContainer;
+    public GameObject PadContainer,PauseBoi;
     public ShootRay shooter;
     public Color DashColor;
     public GunController gun;
@@ -48,7 +48,14 @@ public class Movement : MonoBehaviour
 
     }
     void OnPause(InputValue Button) {
-        PauseHandler.StartPauseMenu();
+        if (PauseBoi.activeInHierarchy)
+        {
+            PauseHandler.ExitPauseMenu();
+        } else
+        {
+            PauseHandler.StartPauseMenu();
+        }
+        
         
     }
     void Allign() {

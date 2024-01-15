@@ -11,6 +11,7 @@ public class DifficultyHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         foreach(TurretController turrcorr in MovingBoi.turrets)
         {
             turrcorr.Speed = turretAnimationSpeed;
