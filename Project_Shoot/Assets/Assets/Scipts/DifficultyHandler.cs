@@ -11,8 +11,18 @@ public class DifficultyHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        turretAnimationSpeed = PlayerPrefs.GetFloat("TurretAnimationSpeed") ;
+        bulletSpeed = PlayerPrefs.GetFloat("BulletSpeed");
+        pulseInterval = PlayerPrefs.GetFloat("PulseInterval") ;
+        willPulse = PlayerPrefs.GetInt("WillPulse") ;
+        pointsPerTarget = PlayerPrefs.GetFloat("pointsPerTarget") ;
+        TargetLife = PlayerPrefs.GetFloat("TargetLife") ;
+        fireRate = PlayerPrefs.GetFloat("turretLimit");
+        wavesToUpgrade = PlayerPrefs.GetInt("wavesToUpgrade");
+        maxMissed = PlayerPrefs.GetInt("maxTargetsmissed");
 
-        foreach(TurretController turrcorr in MovingBoi.turrets)
+
+        foreach (TurretController turrcorr in MovingBoi.turrets)
         {
             turrcorr.Speed = turretAnimationSpeed;
             turrcorr.BulletSpeed = bulletSpeed;
