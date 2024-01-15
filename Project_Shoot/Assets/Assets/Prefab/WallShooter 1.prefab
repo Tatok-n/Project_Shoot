@@ -106,7 +106,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Child: {fileID: 836226314258542562, guid: cfd21a154c531284fa22368ebcc87665, type: 3}
+  Child: {fileID: 5722022626014232932}
   Shoot: 0
   playanimation: 0
   shot: {fileID: 0}
@@ -444,6 +444,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfd21a154c531284fa22368ebcc87665, type: 3}
+--- !u!1 &5722022626014232932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 836226314258542562, guid: cfd21a154c531284fa22368ebcc87665,
+    type: 3}
+  m_PrefabInstance: {fileID: 4968150050273586822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5722022626014232935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 836226314258542561, guid: cfd21a154c531284fa22368ebcc87665,

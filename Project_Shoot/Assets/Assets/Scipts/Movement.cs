@@ -15,12 +15,11 @@ public class Movement : MonoBehaviour
     public GameObject PadContainer;
     public ShootRay shooter;
     public Color DashColor;
-    
-
     public GunController gun;
     public TurretController[] turrets;
-
     public Pause PauseHandler;
+    public int willPulse;
+
      void OnMove (InputValue movementValue)
     {
         
@@ -71,7 +70,7 @@ public class Movement : MonoBehaviour
             Forward = -Vector3.forward;
             Right = -Vector3.right;
             rotation = 180f;
-        } else {
+        } else { //looking left
             Forward = -Vector3.right;
             Right = Vector3.forward;
             rotation = 270f;
@@ -260,7 +259,7 @@ public class Movement : MonoBehaviour
         gun.MoveAnimation();
      }
 
-     TimeSincePulse += Time.deltaTime;
+     TimeSincePulse += Time.deltaTime*willPulse;
      if (TimeSincePulse >= PulseInterval) {
         TimeSincePulse = 0f;
         int randpick = 0;

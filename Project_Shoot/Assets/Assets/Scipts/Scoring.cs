@@ -8,11 +8,9 @@ using TMPro;
 
 public class Scoring : MonoBehaviour
 {
-    public float minx,minz,maxx,maxz,spacing,TargetLife,turretCounter, turretLimit;
+    public float minx,minz,maxx,maxz,spacing,TargetLife,turretCounter, turretLimit, TargetPoints, score, SpawnTime, CurrentHighScore;
     public ShootRay shooter;
-
     public int numTargets,missedTargets,maxTargetsmissed,waves,wavesToUpgrade;
-    public float TargetPoints,score,SpawnTime,CurrentHighScore;
     public GameObject TargetBoi,NormalUI,GameOverScreen;
     public AnimationCurve ScoreCurve;
     public Vector3[] TargetPos;

@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 public class TurretController : MonoBehaviour
 {
     public VisualEffect spawnEffect;
-    public float radius,lifetime,DefRad,Speed,dirFront,dirRight;
+    public float radius,lifetime,DefRad,Speed,dirFront,dirRight,BulletSpeed;
     public Vector3 Spherepos,DefPos;
     public int spawnRate;
     public Transform spawnpos,turrettrans,newtrans;
@@ -19,9 +19,10 @@ public class TurretController : MonoBehaviour
 
     public PewPewController shot;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        Child = GameObject.Find("PewPew Shot");
+
     }
 
     public void TurretShoot() {
@@ -40,12 +41,13 @@ public class TurretController : MonoBehaviour
             spawnEffect.SetInt("SpawnRate",0);
             newtrans = spawnpos;
             newtrans.localScale = new Vector3 (1f,1f,1f);
-            Instantiate(Child, newtrans);
+            GameObject projectileIntantiated = Instantiate(Child, newtrans);
+            shot = projectileIntantiated.GetComponent<PewPewController>();
+            projectileIntantiated.GetComponent<Transform>().position = newtrans.position;
+            shot.speed = BulletSpeed;
             Shoot = false;
             lifetime = 0f;
-            //shot = GetComponentInChildren<PewPewController>();
-            //shot.front = dirFront;
-            //shot.right = dirRight;
+           
         }
     }
     public void Fire() {
