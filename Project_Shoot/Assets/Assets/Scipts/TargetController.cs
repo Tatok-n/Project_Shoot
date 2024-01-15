@@ -19,7 +19,7 @@ public class TargetController : MonoBehaviour
     }
 
     public void DestroyTheBoi() {
-        if (ScoreBoi.spawnOnPoints) {
+        if (ScoreBoi.spawnNewTargetsOnBreak) {
             ScoreBoi.spawnTarget();
         } 
         Destroy(this.gameObject);

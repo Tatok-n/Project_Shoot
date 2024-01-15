@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     public GameObject PadContainer;
     public ShootRay shooter;
     public Color DashColor;
+    
 
     public GunController gun;
     public TurretController[] turrets;
@@ -56,7 +57,7 @@ public class Movement : MonoBehaviour
         if (angle<=45f || angle >= 315f) { //Looking original Forward
             Forward = Vector3.forward;
             Right = Vector3.right;
-            rotation= 0f;
+            rotation= 0f;  
             
         } else if (angle >=45f && angle <= 135f) //looking original Right 
         {
@@ -64,6 +65,7 @@ public class Movement : MonoBehaviour
             Right = -Vector3.forward;
             rotation= 90f;
             
+
         } else if (angle >= 135f && angle <= 225) //looking original behind
         {
             Forward = -Vector3.forward;

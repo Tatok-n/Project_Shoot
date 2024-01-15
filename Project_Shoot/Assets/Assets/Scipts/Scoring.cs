@@ -11,12 +11,12 @@ public class Scoring : MonoBehaviour
     public float minx,minz,maxx,maxz,spacing,TargetLife,turretCounter, turretLimit;
     public ShootRay shooter;
 
-    public int numTargets,missedTargets,maxTargetsmissed;
+    public int numTargets,missedTargets,maxTargetsmissed,waves,wavesToUpgrade;
     public float TargetPoints,score,SpawnTime,CurrentHighScore;
     public GameObject TargetBoi,NormalUI,GameOverScreen;
     public AnimationCurve ScoreCurve;
     public Vector3[] TargetPos;
-    public bool spawnOnPoints;
+    public bool spawnNewTargetsOnBreak,increasingTargets;
     public GunController gun;
     public TextMeshProUGUI ScoreUI,MissedUI,HighScore;
     public GameObject ShootingAnimation;
@@ -26,10 +26,25 @@ public class Scoring : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        waves = 0;
         score = 0f;
-        spawnTargets(numTargets);
-        TargetPos = new Vector3[numTargets];
+        
+        
+        if (increasingTargets)
+        {
+            numTargets = 1;
+        } else {
+            spawnTargets(numTargets);
+        }
+        
+    }
+
+    public void incrementTargets()
+    {
+        if (waves>wavesToUpgrade)
+        {
+            numTargets += 1;
+        }
     }
     void OnFire() {
         score += shooter.Fire();
@@ -44,11 +59,13 @@ public class Scoring : MonoBehaviour
         if (turrets.Length == 0) {
             turrets = mov.turrets;
         }
-        if (!spawnOnPoints) {
+        if (!spawnNewTargetsOnBreak) {
             SpawnTime += Time.deltaTime;
             if (SpawnTime>=TargetLife) {
-                spawnTargets(numTargets);
                 SpawnTime =0f;
+                waves += 1;
+                incrementTargets();
+                spawnTargets(numTargets);
             }
         }
 
@@ -81,6 +98,12 @@ public class Scoring : MonoBehaviour
     }
 
     public void spawnTargets(int number) {
+        if (number == 1)
+        {
+            spawnTarget();
+            return;
+        }
+        TargetPos = new Vector3[number];
         Vector3 pos = new Vector3(0f,0f,0f);
         System.Random rnd = new System.Random();
         for (int i = 0; i< number; i++){

@@ -66,7 +66,7 @@ public class SettingsHandler : MonoBehaviour
         GI.value = PlayerPrefs.GetInt("GI", 3);
         SSSAO.value =  PlayerPrefs.GetInt("AO",2);
         Bloom.value = PlayerPrefs.GetFloat("Bloom", 0.69f);
-        Sens.value = PlayerPrefs.GetFloat("Sens", 0.11f);
+        Sens.value = PlayerPrefs.GetFloat("Sens", 2.0f);
         if (PlayerPrefs.GetInt("Chroma",1) == 1) {
             Chroma.isOn = true;
         } else {

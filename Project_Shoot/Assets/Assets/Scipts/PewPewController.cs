@@ -34,8 +34,19 @@ public class PewPewController : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             score.GameOver();
-        } else if (!(other.tag == "Pads" || other.tag =="Targets" || other.tag=="PewPew")) {
+        } else if (other.tag == "Assist") {
+            other.GetComponent<AssistController>().triggered = true;
+        } else if (!(other.tag == "Pads" || other.tag == "Targets" || other.tag == "PewPew")) {
             Destroy(this.gameObject);
+        } 
+    }
+     
+   
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Assist")
+        {
+            other.GetComponent<AssistController>().triggered = false;
         }
     }
 }
