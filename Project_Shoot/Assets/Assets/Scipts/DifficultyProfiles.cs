@@ -9,6 +9,7 @@ public class DifficultyProfiles : MonoBehaviour
     // Start is called before the first frame update
     public void SetDiff()
     {
+        difficulty = PlayerPrefs.GetInt("Diff");
         switch (difficulty)
         {
             case 0: //easy 
