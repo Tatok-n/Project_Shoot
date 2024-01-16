@@ -7,6 +7,8 @@ public class Pause : MonoBehaviour
 {
     public GameObject PauseMenu, SettingsMenu;
     public FirstPersonCameraRotation fps;
+    public bool GameEND = false;
+    public Pause PAPA;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +16,15 @@ public class Pause : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Restart()
     {
+        PAPA.ExitPauseMenu();
+        SceneManager.LoadScene("Default_Level");
         
     }
 
     public void StartPauseMenu() {
+        if (GameEND) { return; }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         PauseMenu.SetActive(true);
@@ -28,6 +33,7 @@ public class Pause : MonoBehaviour
     }
 
     public void ExitPauseMenu() {
+        if (GameEND) { return; }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         PauseMenu.SetActive(false);
@@ -40,5 +46,6 @@ public class Pause : MonoBehaviour
 }
     public void Mainmenu() {
         SceneManager.LoadScene("IntroScreen");
+        Time.timeScale = 1f;
     }
 }

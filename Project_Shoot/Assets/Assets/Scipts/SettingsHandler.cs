@@ -9,7 +9,8 @@ public class SettingsHandler : MonoBehaviour
     public TMP_Dropdown PerformancePreset, SSR,SSSAO,GI;
     public Slider Bloom,Sens;
     public Toggle Chroma;
-
+    public int AOPref, OverallPref, SSRval, GIval, chroma;
+    public float sensval, bloomval;
     public GameObject Settings,PreviousMenu;
     public TextMeshProUGUI BloomUI,SensUI;
     
@@ -22,32 +23,40 @@ public class SettingsHandler : MonoBehaviour
 
    
    public void SetAOPref() {
-    PlayerPrefs.SetInt("AO", SSSAO.value);
+        //PlayerPrefs.SetInt("AO",SSSAO.value);
+        AOPref = SSSAO.value;
    }
 
    public void SetOverallPref() {
-    PlayerPrefs.SetInt("Preset", PerformancePreset.value);
+        //PlayerPrefs.SetInt("Preset", PerformancePreset.value);
+        OverallPref = PerformancePreset.value;
    }
     public void SetSens() {
-        PlayerPrefs.SetFloat("Sens",Sens.value);
+        //PlayerPrefs.SetFloat("Sens",Sens.value);
+        sensval = Sens.value;
     }
 
     public void SetBloom () {
-        PlayerPrefs.SetFloat("Bloom", Bloom.value);
+        //PlayerPrefs.SetFloat("Bloom", Bloom.value);
+        bloomval = Bloom.value;
     }
     public void SetSSR () {
-        PlayerPrefs.SetInt("SSR", SSR.value);
+        //PlayerPrefs.SetInt("SSR", SSR.value);
+        SSRval = SSR.value;
     }
 
     public void GlobalIllumi () {
-        PlayerPrefs.SetInt("GI", GI.value);
+        //PlayerPrefs.SetInt("GI", GI.value);
+        GIval = GI.value;
     }
 
     public void SetChroma() {
         if (Chroma.isOn) {
-        PlayerPrefs.SetInt("Chroma", 1);
-        } else {
-        PlayerPrefs.SetInt("Chroma", 0);
+            //PlayerPrefs.SetInt("Chroma", 1);
+            chroma = 1;
+       } else {
+       // PlayerPrefs.SetInt("Chroma", 0);
+       chroma = 0;
         }
         
     }
@@ -78,12 +87,12 @@ public class SettingsHandler : MonoBehaviour
     }
 
     public void saveValues() {
-        PlayerPrefs.SetInt("Preset", PerformancePreset.value);
-        PlayerPrefs.SetInt("SSR", SSR.value);
-        PlayerPrefs.SetInt("GI", GI.value);
-        PlayerPrefs.SetInt("AO",SSSAO.value);
-        PlayerPrefs.SetFloat("Bloom", Bloom.value);
-        PlayerPrefs.SetFloat("Sens", Sens.value);
+        PlayerPrefs.SetInt("Preset", OverallPref);
+        PlayerPrefs.SetInt("SSR", SSRval);
+        PlayerPrefs.SetInt("GI", GIval);
+        PlayerPrefs.SetInt("AO", AOPref);
+        PlayerPrefs.SetFloat("Bloom", bloomval);
+        PlayerPrefs.SetFloat("Sens", sensval);
         if (Chroma.isOn) {
             PlayerPrefs.SetInt("Chroma",1);
             

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartGame : MonoBehaviour
 {
     public GameObject LevelSelect, previousMenu;
+    public bool DiffSelected = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class StartGame : MonoBehaviour
     }
 
     public void StartDefaultLvl() {
+        if (!DiffSelected) { return; }
         SceneManager.LoadScene("Default_Level");
     }
 }

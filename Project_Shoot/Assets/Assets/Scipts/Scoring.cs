@@ -11,7 +11,7 @@ public class Scoring : MonoBehaviour
     public float minx,minz,maxx,maxz,spacing,TargetLife,turretCounter, turretLimit, TargetPoints, score, SpawnTime, CurrentHighScore;
     public ShootRay shooter;
     public int numTargets,missedTargets,maxTargetsmissed,waves,wavesToUpgrade;
-    public GameObject TargetBoi,NormalUI,GameOverScreen;
+    public GameObject TargetBoi,NormalUI,GameOverScreen,GameOverButton;
     public AnimationCurve ScoreCurve;
     public Vector3[] TargetPos;
     public bool spawnNewTargetsOnBreak,increasingTargets;
@@ -91,8 +91,13 @@ public class Scoring : MonoBehaviour
             HighScore.text = "Current High Score : " + Mathf.Round(PlayerPrefs.GetFloat("HighScore")).ToString();
             mov.PauseHandler.PauseMenu.SetActive(false);
             NormalUI.SetActive(false);
+            Time.timeScale = 0f;
+        mov.PauseHandler.StartPauseMenu();
+        mov.PauseHandler.GameEND = true;
             GameOverScreen.SetActive(true);
-            
+            GameOverButton.SetActive(false);
+
+
     }
 
     public void spawnTargets(int number) {
