@@ -19,6 +19,8 @@ public class SettingsHandler : MonoBehaviour
     GetBloomDisplay();
     GetSensDisplay();
    }
+
+   
    public void SetAOPref() {
     PlayerPrefs.SetInt("AO", SSSAO.value);
    }

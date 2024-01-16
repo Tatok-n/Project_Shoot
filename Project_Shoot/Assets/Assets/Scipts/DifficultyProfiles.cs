@@ -7,9 +7,9 @@ public class DifficultyProfiles : MonoBehaviour
 {
     public int difficulty;
     // Start is called before the first frame update
-    void Awake()
+    public void SetDiff()
     {
-        switch(difficulty)
+        switch (difficulty)
         {
             case 0: //easy 
                 PlayerPrefs.SetFloat("TurretAnimationSpeed", 0.2f);
@@ -48,6 +48,10 @@ public class DifficultyProfiles : MonoBehaviour
                 break;
 
         }
+    }
+     void Awake()
+    {
+        SetDiff();
     }
     
     // Update is called once per frame
