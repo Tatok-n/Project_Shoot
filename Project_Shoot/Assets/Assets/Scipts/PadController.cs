@@ -71,7 +71,7 @@ public class PadController : MonoBehaviour
     public void SpawnPadBack()
     {
         
-        if (padPos.z <= ((lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))
+        if (padPos.z < ((lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))
         {
             back = Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z + lvlGen.padSpacingVert), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
         }
@@ -82,7 +82,7 @@ public class PadController : MonoBehaviour
 
     public void SpawnPadFront()
     {
-        if (padPos.z >= (-(lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))
+        if (padPos.z > (-(lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))
         {
             front = Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z - lvlGen.padSpacingVert), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
         }
@@ -130,16 +130,13 @@ public class PadController : MonoBehaviour
         TrySpawnTurret();
 
 
-        /*
+        
         RaycastHit hitright;
         if (Physics.Raycast(rightemitter.position, transform.TransformDirection(Vector3.right) , out hitright, spawnRange))
         {
 
-            if (hitright.collider.tag == "Wall" && padPos.x == ((lvlGen.numPadsHor-1)/2 * lvlGen.padSpacingVert))  {
-                spawnedturret = true;
-                TurretSpawn.position = new Vector3 (hitright.point.x, hitright.point.y + 1.5f, hitright.point.z);
-                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>();
-                turretBoi.dirRight = -1f;   
+            if (hitright.collider.tag == "Pads") {
+                right = hitright.collider.GetComponent<PadController>();
             }
             
 
@@ -154,15 +151,6 @@ public class PadController : MonoBehaviour
             
             if (hitleft.collider.tag == "Pads") {
                 left = hitleft.collider.GetComponent<PadController>();
-            } else 
-            if (hitleft.collider.tag == "Wall" && padPos.x == (-(lvlGen.numPadsHor - 1) / 2 * lvlGen.padSpacingVert))  {
-                spawnedturret = true;
-                TurretSpawn.position = new Vector3 (hitleft.point.x, hitleft.point.y + 1.5f, hitleft.point.z);
-                TurretSpawn.eulerAngles = new Vector3 (TurretSpawn.eulerAngles.x, TurretSpawn.eulerAngles.y + 180f, TurretSpawn.eulerAngles.z);
-
-                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>();
-                turretBoi.dirRight = 1f;           
-                
             }
 
 
@@ -172,53 +160,7 @@ public class PadController : MonoBehaviour
             Instantiate(Pad, new Vector3(padPos.x - lvlGen.padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform);
         }
 
-        RaycastHit hitfront;
-        if (Physics.Raycast(frontemitter.position, transform.TransformDirection(Vector3.forward) , out hitfront, spawnRange))
-        {
-            
-            if (hitfront.collider.tag == "Pads") {
-                front = hitfront.collider.GetComponent<PadController>();
-            }else 
-            if (hitfront.collider.tag == "Wall" && padPos.z == ((lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))  {
-                //spawnedturret = true;
-                TurretSpawn.position = new Vector3 (hitfront.point.x, hitfront.point.y + 1.5f, hitfront.point.z);
-                TurretSpawn.eulerAngles = new Vector3 (TurretSpawn.eulerAngles.x, TurretSpawn.eulerAngles.y + 270f, TurretSpawn.eulerAngles.z);
-
-                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>();
-                turretBoi.dirFront = -1f;   
-            }
-
-
-        }
-        else
-        {
-            Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z + lvlGen.padSpacingVert),padTransform.rotation, ParentTransform);
-        }
-
-
-        RaycastHit hitback;
-        if (Physics.Raycast(backemitter.position, transform.TransformDirection(-Vector3.forward) , out hitback, spawnRange))
-        {
-
-            /*if (hitback.collider.tag == "Pads") {
-                back = hitback.collider.GetComponent<PadController>();
-            } else 
-            if (hitback.collider.tag == "Wall" && padPos.z == (-(lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))  {
-                spawnedturret = true;
-                TurretSpawn.position = new Vector3 (hitback.point.x, hitback.point.y + 1.5f, hitback.point.z);
-                TurretSpawn.eulerAngles = new Vector3 (TurretSpawn.eulerAngles.x, TurretSpawn.eulerAngles.y + 90f, TurretSpawn.eulerAngles.z);
-
-                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>() ; //GetComponentInChildren<TurretController>();
-                turretBoi.dirFront = 1f;
-            }
-
-
-        }
-        else
-        {
-            Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z - lvlGen.padSpacingVert), padTransform.rotation, ParentTransform);
-        }
-            */
+        
     }
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
