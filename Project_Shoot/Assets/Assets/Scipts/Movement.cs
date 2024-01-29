@@ -215,7 +215,7 @@ public class Movement : MonoBehaviour
     
     void FixedUpdate() 
     {
-    
+    pads = PadContainer.GetComponentsInChildren<PadController>();
      Allign();
      if (isAiming) {
         float dist = 100f;
