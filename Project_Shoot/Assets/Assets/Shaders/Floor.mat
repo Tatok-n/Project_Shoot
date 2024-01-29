@@ -248,7 +248,7 @@ Material:
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _Rough: 0.83
-    - _ScaleX: 8.850501
+    - _ScaleX: 5
     - _ScaleZ: 8.85
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1

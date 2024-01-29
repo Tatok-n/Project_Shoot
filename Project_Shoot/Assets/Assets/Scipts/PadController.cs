@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -7,18 +9,20 @@ public class PadController : MonoBehaviour
 {
     public Light spot;
     public float Life,Speed,Strength,ScaleX,ScaleY,ScaleZ;
-    public Transform padTransform,frontemitter,leftemitter,rightemitter,backemitter,TurretSpawn;
+    public Transform padTransform,frontemitter,leftemitter,rightemitter,backemitter,TurretSpawn,ParentTransform;
     public Vector3 padPos;
     public bool Used,recFront,recBack,recRight,recLeft,Topulse,touchingPlayer,spawnedturret;
     public Color ActionColor;
     public AnimationCurve ActionCurve;
     public PadController front,back,left,right;
-    public GameObject Turret;
+    public GameObject Turret,Pad;
     public Movement mov;
 
     public Scoring score;
     public TurretController turretBoi;
     public VisualEffect pulsefx;
+
+    public LevelGenerator lvlGen;
 
     // Start is called before the first frame update
     void Awake()
@@ -28,77 +32,95 @@ public class PadController : MonoBehaviour
         TurretSpawn.localScale = new Vector3(0.5f,3f,0.5f);
         padPos = padTransform.position;
         spot.intensity = 0f;
+        lvlGen = GameObject.Find("LevelGen").GetComponentInChildren<LevelGenerator>();
+        float spawnRange = lvlGen.padSpacingVert + 2;
+
         RaycastHit hitright;
-        if (Physics.Raycast(rightemitter.position, transform.TransformDirection(Vector3.right) , out hitright, 100f))
+        if (Physics.Raycast(rightemitter.position, transform.TransformDirection(Vector3.right) , out hitright, spawnRange))
         {
 
-            if (hitright.collider.tag == "Pads") {
-                right = hitright.collider.GetComponent<PadController>();
-            } else if (!spawnedturret)  {
+            if (hitright.collider.tag == "Wall")  {
                 spawnedturret = true;
                 TurretSpawn.position = new Vector3 (hitright.point.x, hitright.point.y + 1.5f, hitright.point.z);
-                Instantiate(Turret,TurretSpawn);
-                turretBoi = GetComponentInChildren<TurretController>();
-                turretBoi.dirRight = -1f;                      
-                
+                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>();
+                turretBoi.dirRight = -1f;   
             }
             
 
+        } else
+        {
+            right = Instantiate(Pad, new Vector3 (padPos.x+ lvlGen.padSpacingVert, padPos.y, padPos.z ),padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>(); ;
         }
 
         RaycastHit hitleft;
-        if (Physics.Raycast(leftemitter.position, transform.TransformDirection(Vector3.left) , out hitleft, 100f))
+        if (Physics.Raycast(leftemitter.position, transform.TransformDirection(Vector3.left) , out hitleft, spawnRange))
         {
-
+            /*
             if (hitleft.collider.tag == "Pads") {
                 left = hitleft.collider.GetComponent<PadController>();
-            } else if (!spawnedturret)  {
+            } else */
+            if (hitleft.collider.tag == "Wall")  {
                 spawnedturret = true;
                 TurretSpawn.position = new Vector3 (hitleft.point.x, hitleft.point.y + 1.5f, hitleft.point.z);
                 TurretSpawn.eulerAngles = new Vector3 (TurretSpawn.eulerAngles.x, TurretSpawn.eulerAngles.y + 180f, TurretSpawn.eulerAngles.z);
-                Instantiate(Turret,TurretSpawn);
-                turretBoi = GetComponentInChildren<TurretController>();
+
+                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>();
                 turretBoi.dirRight = 1f;           
                 
             }
-            
 
+
+        }
+        else
+        {
+            Instantiate(Pad, new Vector3(padPos.x - lvlGen.padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform);
         }
 
         RaycastHit hitfront;
-        if (Physics.Raycast(frontemitter.position, transform.TransformDirection(Vector3.forward) , out hitfront, 100f))
+        if (Physics.Raycast(frontemitter.position, transform.TransformDirection(Vector3.forward) , out hitfront, spawnRange))
         {
-
+            /*
             if (hitfront.collider.tag == "Pads") {
                 front = hitfront.collider.GetComponent<PadController>();
-            }else if (!spawnedturret)  {
-                spawnedturret = true;
+            }else */
+            if (hitfront.collider.tag == "Wall")  {
+                //spawnedturret = true;
                 TurretSpawn.position = new Vector3 (hitfront.point.x, hitfront.point.y + 1.5f, hitfront.point.z);
                 TurretSpawn.eulerAngles = new Vector3 (TurretSpawn.eulerAngles.x, TurretSpawn.eulerAngles.y + 270f, TurretSpawn.eulerAngles.z);
-                Instantiate(Turret,TurretSpawn);
-                turretBoi = GetComponentInChildren<TurretController>();
+
+                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>();
                 turretBoi.dirFront = -1f;   
             }
-            
+
 
         }
+        else
+        {
+            Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z + lvlGen.padSpacingVert),padTransform.rotation, ParentTransform);
+        }
+
 
         RaycastHit hitback;
-        if (Physics.Raycast(backemitter.position, transform.TransformDirection(-Vector3.forward) , out hitback, 100f))
+        if (Physics.Raycast(backemitter.position, transform.TransformDirection(-Vector3.forward) , out hitback, spawnRange))
         {
 
-            if (hitback.collider.tag == "Pads") {
+            /*if (hitback.collider.tag == "Pads") {
                 back = hitback.collider.GetComponent<PadController>();
-            } else if (!spawnedturret)  {
+            } else */
+            if (hitback.collider.tag == "Wall")  {
                 spawnedturret = true;
                 TurretSpawn.position = new Vector3 (hitback.point.x, hitback.point.y + 1.5f, hitback.point.z);
                 TurretSpawn.eulerAngles = new Vector3 (TurretSpawn.eulerAngles.x, TurretSpawn.eulerAngles.y + 90f, TurretSpawn.eulerAngles.z);
-                Instantiate(Turret,TurretSpawn);
-                turretBoi = GetComponentInChildren<TurretController>();
+
+                turretBoi = Instantiate(Turret, TurretSpawn).GetComponentInChildren<TurretController>() ; //GetComponentInChildren<TurretController>();
                 turretBoi.dirFront = 1f;
             }
-            
 
+
+        }
+        else
+        {
+            Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z - lvlGen.padSpacingVert), padTransform.rotation, ParentTransform);
         }
     }
     void OnTriggerEnter(Collider other) {
