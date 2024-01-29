@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale,rotation,TimeSincePulse,PulseInterval;
+    public float mvmtX, mvmtY,mvmtScale,mvmtProgress,mvmtSpeed,groundval,jumpprog,jumpspeed,jumpscale,rotation,TimeSincePulse,PulseInterval,boundX, boundY;
     public bool isMoving,canMove,transition,isAiming,dashed,jump;
     public Transform player,front,back,left,right,cam;
     public Vector3 Update,initialPos,NewPos,Forward,Right,Spawn,Dashpoint;
@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     public TurretController[] turrets;
     public Pause PauseHandler;
     public int willPulse;
+    public LevelGenerator lvlGen;
 
      void OnMove (InputValue movementValue)
     {
@@ -45,6 +46,9 @@ public class Movement : MonoBehaviour
         Dashpoint = new Vector3 (-1f,-1f,-1f);
         dashpad = pads[0];
         groundval = player.position.y;
+        boundX = lvlGen.padSpacingHor-0.2f;
+        boundY = lvlGen.padSpacingVert-0.2f;
+        mvmtScale = lvlGen.padSpacingVert;
 
     }
     void OnPause(InputValue Button) {
@@ -100,7 +104,7 @@ public class Movement : MonoBehaviour
             DirY = mvmtX;
             DirX = -mvmtY;
         }
-        if  (player.position.x >= left.position.x - 4.6f && DirX == 1)
+        if  (player.position.x >= left.position.x - boundX && DirX == 1)
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtX = 0;
@@ -108,7 +112,7 @@ public class Movement : MonoBehaviour
                 mvmtY = 0;
             }
         } 
-        else if  (player.position.x <= right.position.x + 4.6f && DirX == -1)
+        else if  (player.position.x <= right.position.x + boundX && DirX == -1)
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtX = 0;
@@ -116,7 +120,7 @@ public class Movement : MonoBehaviour
                 mvmtY = 0;
             }
         }
-        if   (player.position.z <= front.position.z + 4.6f && DirY == -1) 
+        if   (player.position.z <= front.position.z + boundY && DirY == -1) 
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtY = 0;
@@ -124,7 +128,7 @@ public class Movement : MonoBehaviour
                 mvmtX = 0;
             }
         }
-        else if    (player.position.z >= back.position.z - 4.6f && DirY == 1) 
+        else if    (player.position.z >= back.position.z - boundY && DirY == 1) 
         {
             if (rotation == 0f || rotation == 180f) {
                 mvmtY = 0;

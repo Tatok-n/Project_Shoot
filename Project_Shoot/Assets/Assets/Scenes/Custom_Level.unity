@@ -13972,6 +13972,16 @@ PrefabInstance:
       objectReference: {fileID: 1160723512}
     - target: {fileID: 7741192915596329337, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
+      propertyPath: lvlGen
+      value: 
+      objectReference: {fileID: 1247126522}
+    - target: {fileID: 7741192915596329337, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: lvlgen
+      value: 
+      objectReference: {fileID: 1247126522}
+    - target: {fileID: 7741192915596329337, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
       propertyPath: PauseBoi
       value: 
       objectReference: {fileID: 1300482761}

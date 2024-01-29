@@ -14,6 +14,7 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         SetFloor();
+        SetWalls();
     }
 
     // Update is called once per frame
@@ -27,20 +28,17 @@ public class LevelGenerator : MonoBehaviour
     {
         FloorMat.SetFloat("_ScaleX", FloorTransform.localScale.x);
         FloorMat.SetFloat("_ScaleY", FloorTransform.localScale.y);
+
+        FloorTransform.localScale = new Vector3((numPadsHor+1) / 2, 1, (numPadsVert+1) / 2);
     }
 
     public void SetWalls()
     {
-        Vector3 leftWallpos = new Vector3((numPadsHor - 1f) / 2f * padSpacingHor + 4.5f, 0f, 0f);
-        Vector3 rightWallpos = new Vector3(-((numPadsHor - 1) / 2 * padSpacingHor + 4.5f), 0f, 0f);
-        Vector3 backWallpos = new Vector3(0f, 0f, -((numPadsVert - 1f) / 2f * padSpacingVert + 4.5f));
-        Vector3 frontWallpos = new Vector3(0f, 0f, (numPadsVert - 1f) / 2f * padSpacingVert + 4.5f);
-        /*
-        leftWallpos.x = (numPadsHor - 1) / 2 * padSpacingHor + 4.5;
-        rightWallpos.x = -((numPadsHor - 1) / 2 * padSpacingHor + 4.5);
-        backWallpos.z = -((numPadsVert - 1) / 2 * padSpacingVert + 4.5);
-        frontWallpos.z = (numPadsVert - 1) / 2 * padSpacingVert + 4.5;
-        */
+        Vector3 leftWallpos = new Vector3((numPadsHor - 1) / 2f * padSpacingHor + 4.5f, 0f, 0f); //EVERYTHIGN IS FLIPPED
+        Vector3 rightWallpos = new Vector3(-((numPadsHor - 1) / 2f * padSpacingHor + 4.5f), 0f, 0f);
+        Vector3 backWallpos = new Vector3(0f, 0f, (numPadsVert - 1f) / 2f * padSpacingVert + 4.5f);
+        Vector3 frontWallpos = new Vector3(0f, 0f, -((numPadsVert - 1f) / 2f * padSpacingVert + 4.5f));
+       
         leftWall.position = leftWallpos;
         rightWall.position = rightWallpos;   
         backWall.position = backWallpos; 
