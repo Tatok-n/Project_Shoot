@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Floor
-  m_Shader: {fileID: -6465566751694194690, guid: 5c4f37e097252294ab4c62fc729f132e,
+  m_Name: WallBoi
+  m_Shader: {fileID: -6465566751694194690, guid: 457d4e94407433040b22d33219c7381a,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -16,7 +16,7 @@ Material:
   - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords:
   - _NORMALMAP_TANGENT_SPACE
-  m_LightmapFlags: 1
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2225
@@ -26,8 +26,8 @@ Material:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
-  - MOTIONVECTORS
   - RayTracingPrepass
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -84,14 +84,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NormalFromTexture_d3a3036cfe11489a93ec8616ee1e39fb_Texture_0:
-        m_Texture: {fileID: 2800000, guid: 39aed65f4b33d59478b7e9837e9025c6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalFromTexture_d3a3036cfe11489a93ec8616ee1e39fb_Texture_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 39aed65f4b33d59478b7e9837e9025c6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -105,27 +97,27 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_3fff2f2809b4401fb6ee547a319d79e5_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 0adacf28cc1a78449b80d496de07c530, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0b6c0a57d07e45d4889b61a7ddd0d2ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_3fff2f2809b4401fb6ee547a319d79e5_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 0adacf28cc1a78449b80d496de07c530, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0b6c0a57d07e45d4889b61a7ddd0d2ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_7ed783e5892e4623b58e677e6b6aa2c2_Texture_1:
-        m_Texture: {fileID: 2800000, guid: d2501e106c61fa14ca4117b41c6d57a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: ddf4a1aff84019a4c9c98f74c1c6d9d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_7ed783e5892e4623b58e677e6b6aa2c2_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: d2501e106c61fa14ca4117b41c6d57a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: ddf4a1aff84019a4c9c98f74c1c6d9d8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_ce666d7d72f04744b4772715d81a3fd9_Texture_1:
-        m_Texture: {fileID: 2800000, guid: b9008d5fec0778e46844e0e6189a390d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7dcbdabe3b8f0c74cb9e92afc744b000, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_ce666d7d72f04744b4772715d81a3fd9_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: b9008d5fec0778e46844e0e6189a390d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7dcbdabe3b8f0c74cb9e92afc744b000, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Specular:
@@ -228,11 +220,9 @@ Material:
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
-    - _Metal: -0.05
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
-    - _Normal: 0.28
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OpaqueCullMode: 2
@@ -247,9 +237,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Rough: 0.83
-    - _ScaleX: 6.1953506
-    - _ScaleZ: 8.85
+    - _Rough: 0.56
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -273,7 +261,7 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
-    - _Tiling: 0.88
+    - _Tiling: 13.5
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -294,7 +282,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.7921569, g: 0.67783415, b: 0.6313726, a: 1}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
