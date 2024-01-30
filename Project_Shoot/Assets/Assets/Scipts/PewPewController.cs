@@ -42,12 +42,29 @@ public class PewPewController : MonoBehaviour
         {
             triggerRotation = 180;
         }
+        
            
 
     }
 
     void OnCollisionEnter(Collision collision) {
-        
+        if (collision.collider.tag == "Player")
+        {
+            score.GameOver();
+        }
+        else if (collision.collider.tag == "Assist")
+        {
+            if (collision.collider.GetComponent<AssistController>().isLeft && triggerRotation == 270)
+                collision.collider.GetComponent<AssistController>().triggered = true;
+            else if (collision.collider.GetComponent<AssistController>().isRight && triggerRotation == 90)
+                collision.collider.GetComponent<AssistController>().triggered = true;
+            else if (collision.collider.GetComponent<AssistController>().isBack && triggerRotation == 180)
+                collision.collider.GetComponent<AssistController>().triggered = true;
+        }
+        else if (!(collision.collider.tag == "Pads" || collision.collider.tag == "Targets" || collision.collider.tag == "PewPew"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnTriggerEnter(Collider other) {
@@ -71,6 +88,14 @@ public class PewPewController : MonoBehaviour
         if (other.tag == "Assist")
         {
             other.GetComponent<AssistController>().triggered = false;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.tag == "Assist")
+        {
+            collision.collider.GetComponent<AssistController>().triggered = false;
         }
     }
 }
