@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public AnimationCurve Smoother,JumpCurve;
     public PadController[] pads;
     public PadController dashpad;
-    public GameObject PadContainer,PauseBoi;
+    public GameObject PadContainer,PauseBoi,TurretContainer;
     public ShootRay shooter;
     public Color DashColor;
     public GunController gun;
@@ -36,7 +36,8 @@ public class Movement : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start()
-    {   turrets = PadContainer.GetComponentsInChildren<TurretController>();
+    {   
+        turrets = TurretContainer.GetComponentsInChildren<TurretController>();
         TimeSincePulse = 0f;
         player.position = Spawn;
         Forward = Vector3.forward;

@@ -24,6 +24,10 @@ public class Scoring : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxx = mov.left.position.x;
+        minx = mov.right.position.x;
+        maxz = mov.back.position.z;
+        minz = mov.front.position.z;
         waves = 0;
         score = 0f;
         
