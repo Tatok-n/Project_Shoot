@@ -108,7 +108,7 @@ public class CustomLevelUI : MonoBehaviour
         
         score +=ScoreMultiplier(NumPadsVert.value, 21, 5, 2);
         score += ScoreMultiplier(NumPadsHor.value, 21, 5, 2);
-        score += ScoreMultiplier(TurrAnimationSpeed.value, 2f, 0.1f, 0.5f);
+        score += ScoreMultiplier(TurrAnimationSpeed.value, 0.5f, 2f, 0.5f);
         score += ScoreMultiplier(BulletSpeed.value, 0.05f, 3f, 5f);
         score += ScoreMultiplier(PulseInterval.value, 10f, 0.5f, 2f) * PlayerPrefs.GetInt("WillPulse", 1) + PlayerPrefs.GetInt("WillPulse", 1);
         score += ScoreMultiplier(TargetLife.value, 10f, 0.5f, 3f) * (1-PlayerPrefs.GetInt("SpawnOnBreak",0));
