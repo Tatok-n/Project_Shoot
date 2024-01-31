@@ -15,12 +15,19 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        GetCustomParams();
         SetFloor();
         SetWalls();
         SpawnTurrets();
     }
 
-    
+    public void GetCustomParams()
+    {
+        padSpacingHor = PlayerPrefs.GetFloat("padSpacing",5f);
+        padSpacingVert = PlayerPrefs.GetFloat("padSpacing",5f);
+        numPadsHor = PlayerPrefs.GetInt("numPadsHor",11);
+        numPadsVert = PlayerPrefs.GetInt("numPadsVert",11);
+    }
     void Update()
     {
         

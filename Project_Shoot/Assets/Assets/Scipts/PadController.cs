@@ -69,13 +69,14 @@ public class PadController : MonoBehaviour
     }
     void Awake()
     {
-
+        lvlGen = GameObject.Find("LevelGen").GetComponentInChildren<LevelGenerator>();
+        lvlGen.GetCustomParams();
         TurretSpawn.position = padTransform.position;
         TurretSpawn.rotation = padTransform.rotation;
         TurretSpawn.localScale = new Vector3(0.5f,3f,0.5f);
         padPos = padTransform.position;
         spot.intensity = 0f;
-        lvlGen = GameObject.Find("LevelGen").GetComponentInChildren<LevelGenerator>();
+        
         float spawnRange = lvlGen.padSpacingVert + 2;
         
         if (padPos.x == 0 && padPos.z == 0)

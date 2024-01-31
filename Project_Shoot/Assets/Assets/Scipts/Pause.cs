@@ -19,7 +19,7 @@ public class Pause : MonoBehaviour
     public void Restart()
     {
         PAPA.ExitPauseMenu();
-        SceneManager.LoadScene("Default_Level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
     }
 

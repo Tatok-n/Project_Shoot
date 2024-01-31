@@ -1476,8 +1476,8 @@ MonoBehaviour:
   TurretContainer: {fileID: 1253801680}
   padSpacingHor: 5
   padSpacingVert: 5
-  numPadsHor: 11
-  numPadsVert: 11
+  numPadsHor: 5
+  numPadsVert: 5
   Turret: {fileID: 2016885979}
   turretBoi: {fileID: 0}
 --- !u!1 &1253801679
@@ -2355,6 +2355,11 @@ PrefabInstance:
       objectReference: {fileID: 1253801679}
     - target: {fileID: 7741192915596329338, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
+      propertyPath: numTargets
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741192915596329338, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
       propertyPath: turretLimit
       value: 0.5
       objectReference: {fileID: 0}
@@ -2376,6 +2381,11 @@ PrefabInstance:
     - target: {fileID: 7741192915596329338, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: increasingTargets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741192915596329338, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: spawnNewTargetsOnBreak
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7741192916281285173, guid: 6f8fd7291cd35284c88257c14c377eb4,
