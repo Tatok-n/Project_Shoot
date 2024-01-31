@@ -108,31 +108,31 @@ public class PadController : MonoBehaviour
         }
 
 
-        
+
         RaycastHit hitright;
-        if (Physics.Raycast(rightemitter.position, transform.TransformDirection(Vector3.right) , out hitright, spawnRange))
+        if (Physics.Raycast(rightemitter.position, transform.TransformDirection(Vector3.right), out hitright, 100f))
         {
 
-            if (hitright.collider.tag == "Pads") {
+            if (hitright.collider.tag == "Pads")
+            {
                 right = hitright.collider.GetComponent<PadController>();
             }
-            
 
-        } 
-
+        }
         RaycastHit hitleft;
-        if (Physics.Raycast(leftemitter.position, transform.TransformDirection(Vector3.left) , out hitleft, spawnRange))
+        if (Physics.Raycast(leftemitter.position, transform.TransformDirection(Vector3.left), out hitleft, 100f))
         {
-            
-            if (hitleft.collider.tag == "Pads") {
+
+            if (hitleft.collider.tag == "Pads")
+            {
                 left = hitleft.collider.GetComponent<PadController>();
             }
 
 
         }
-        
 
-        
+
+
     }
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
@@ -143,7 +143,53 @@ public class PadController : MonoBehaviour
         }
     }
 
-    
+    void Start()
+    {
+        RaycastHit hitfront;
+        if (Physics.Raycast(frontemitter.position, transform.TransformDirection(Vector3.forward), out hitfront, 100f))
+        {
+
+            if (hitfront.collider.tag == "Pads")
+            {
+                front = hitfront.collider.GetComponent<PadController>();
+            }
+
+
+        }
+
+        RaycastHit hitback;
+        if (Physics.Raycast(backemitter.position, transform.TransformDirection(-Vector3.forward), out hitback, 100f))
+        {
+
+            if (hitback.collider.tag == "Pads")
+            {
+                back = hitback.collider.GetComponent<PadController>();
+            }
+
+
+        }
+        RaycastHit hitright;
+        if (Physics.Raycast(rightemitter.position, transform.TransformDirection(Vector3.right), out hitright, 100f))
+        {
+
+            if (hitright.collider.tag == "Pads")
+            {
+                right = hitright.collider.GetComponent<PadController>();
+            }
+
+        }
+        RaycastHit hitleft;
+        if (Physics.Raycast(leftemitter.position, transform.TransformDirection(Vector3.left), out hitleft, 100f))
+        {
+
+            if (hitleft.collider.tag == "Pads")
+            {
+                left = hitleft.collider.GetComponent<PadController>();
+            }
+
+
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -159,6 +205,8 @@ public class PadController : MonoBehaviour
         if (mov!= null && !mov.CloseEnough(padPos, new Vector3 (mov.player.position.x,mov.groundval,mov.player.position.z), 1f)) {
             touchingPlayer = false;
         }
+
+       
     }
 
     void Pulse() {
