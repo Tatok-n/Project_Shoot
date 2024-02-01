@@ -7,6 +7,8 @@ Key features :
 - Fast paced movement
 - Customisable graphics settings
 - Custom Assets
-- Multiple difficulty settings (in progress)
-- Fully custom level generation parameters (in progress)
+- Multiple difficulty settings 
+- Fully custom level generation parameters
+- Ray traced graphics
+- High-Score sytstem
 
