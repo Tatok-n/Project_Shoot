@@ -1356,8 +1356,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 2053603925}
   m_HandleRect: {fileID: 604287974}
   m_Direction: 0
-  m_MinValue: 5
-  m_MaxValue: 21
+  m_MinValue: 2
+  m_MaxValue: 10
   m_WholeNumbers: 1
   m_Value: 5
   m_OnValueChanged:
@@ -4775,7 +4775,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Hard difficulty :\n- Bullets will move at a fast speed\n- There will be
-    a pulse every 8 seconds\n- Each target gives a max of 500 points \n- You have
+    a pulse every 8 seconds\n- Each target gives a max of 1658 points \n- You have
     5 seconds per group of targets\n- The number of targets will increase every wave\n-
     You can miss up to 7 targets\n- Turrets will shoot every second\n"
   m_isRightToLeft: 0
@@ -6134,8 +6134,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1049321294}
   m_HandleRect: {fileID: 774918693}
   m_Direction: 0
-  m_MinValue: 5
-  m_MaxValue: 21
+  m_MinValue: 2
+  m_MaxValue: 10
   m_WholeNumbers: 1
   m_Value: 5
   m_OnValueChanged:
@@ -10007,7 +10007,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Medium difficulty :\n- Bullets will move at a normal speed\n- There will
-    be no pulses\n- Each target gives a max of 250 points \n- You have 5 seconds
+    be no pulses\n- Each target gives a max of 1364 points \n- You have 5 seconds
     per group of targets\n- The number of targets will increase every 2 waves\n-
     You can miss up to 7 targets\n- Turrets will shoot every second\n"
   m_isRightToLeft: 0
@@ -10817,10 +10817,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 676474271}
   m_HandleRect: {fileID: 1150255547}
   m_Direction: 0
-  m_MinValue: 3
+  m_MinValue: 4
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 3
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10993,7 +10993,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Easy difficulty :\n- Bullets will move slowest\n- There will be no pulses\n-
-    Each target gives a max of 125 points \n- You have 8 seconds per group of targets\n-
+    Each target gives a max of 1138 points \n- You have 8 seconds per group of targets\n-
     The number of targets will increase every 3 waves\n- You can miss up to 10 targets\n-
     Turrets will shoot every 2 seconds\n"
   m_isRightToLeft: 0

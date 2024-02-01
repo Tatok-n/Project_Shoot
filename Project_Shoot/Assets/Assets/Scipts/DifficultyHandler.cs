@@ -7,7 +7,8 @@ public class DifficultyHandler : MonoBehaviour
     public Scoring Scoringmanager;
     public Movement MovingBoi;
     public float bulletSpeed, pointsPerTarget, fireRate, turretAnimationSpeed, pulseInterval,TargetLife;
-    public int willPulse, wavesToUpgrade, maxMissed;
+    public int willPulse, wavesToUpgrade, maxMissed, wavesTillUpgrade, UpgradeStep;
+    public bool spawnOnBreak, IncrementSpawns;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,26 @@ public class DifficultyHandler : MonoBehaviour
         fireRate = PlayerPrefs.GetFloat("turretLimit");
         wavesToUpgrade = PlayerPrefs.GetInt("wavesToUpgrade");
         maxMissed = PlayerPrefs.GetInt("maxTargetsmissed");
+        wavesTillUpgrade = PlayerPrefs.GetInt("WavesTillUpgrade",2);
+        UpgradeStep = PlayerPrefs.GetInt("UpgradeStep", 1);
+        if (PlayerPrefs.GetInt("SpawnOnBreak",0) == 1)
+        {
+            spawnOnBreak = true;
+        } else
+        {
+            spawnOnBreak= false;
+        }
+        if (PlayerPrefs.GetInt("Upgrades", 0) == 1)
+        {
+            IncrementSpawns = true;
+        }
+        else
+        {
+            IncrementSpawns = false;
+        }
+
+
+
 
 
         foreach (TurretController turrcorr in MovingBoi.turrets)
@@ -35,6 +56,10 @@ public class DifficultyHandler : MonoBehaviour
         Scoringmanager.turretLimit = fireRate;
         Scoringmanager.wavesToUpgrade = wavesToUpgrade;
         Scoringmanager.maxTargetsmissed = maxMissed;
+        Scoringmanager.spawnNewTargetsOnBreak = spawnOnBreak;
+        Scoringmanager.increasingTargets = IncrementSpawns;
+        Scoringmanager.wavesToUpgrade = wavesTillUpgrade;
+        Scoringmanager.spawnIncrement = UpgradeStep;
 
     }
 

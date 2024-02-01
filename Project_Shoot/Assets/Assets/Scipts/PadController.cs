@@ -24,13 +24,17 @@ public class PadController : MonoBehaviour
 
     public LevelGenerator lvlGen;
 
+    float padSpacingVert;
+    int numPadsHor;
+    int numPadsVert;
+
     // Start is called before the first frame update
-    
+
     public void SpawnPadRight()
     {
-        if (padPos.x != ((lvlGen.numPadsHor - 1) / 2 * lvlGen.padSpacingVert))
+        if (padPos.x != ((numPadsHor - 1) / 2 * padSpacingVert))
         {
-            right = Instantiate(Pad, new Vector3(padPos.x + lvlGen.padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
+            right = Instantiate(Pad, new Vector3(padPos.x + padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
         }
           
             
@@ -38,9 +42,9 @@ public class PadController : MonoBehaviour
 
     public void SpawnPadLeft()
     {
-        if (padPos.x != (-(lvlGen.numPadsHor - 1) / 2 * lvlGen.padSpacingVert))
+        if (padPos.x != (-(numPadsHor - 1) / 2 * padSpacingVert))
         {
-            left = Instantiate(Pad, new Vector3(padPos.x - lvlGen.padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>(); ; ;
+            left = Instantiate(Pad, new Vector3(padPos.x - padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>(); ; ;
         }
 
 
@@ -49,9 +53,9 @@ public class PadController : MonoBehaviour
     public void SpawnPadBack()
     {
         
-        if (padPos.z < ((lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))
+        if (padPos.z < ((numPadsVert - 1) / 2 * padSpacingVert))
         {
-            back = Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z + lvlGen.padSpacingVert), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
+            back = Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z + padSpacingVert), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
         }
        
 
@@ -60,15 +64,18 @@ public class PadController : MonoBehaviour
 
     public void SpawnPadFront()
     {
-        if (padPos.z > (-(lvlGen.numPadsVert - 1) / 2 * lvlGen.padSpacingVert))
+        if (padPos.z > (-(numPadsVert - 1) / 2 * padSpacingVert))
         {
-            front = Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z - lvlGen.padSpacingVert), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
+            front = Instantiate(Pad, new Vector3(padPos.x, padPos.y, padPos.z - padSpacingVert), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
         }
         
         
     }
     void Awake()
     {
+        padSpacingVert = PlayerPrefs.GetFloat("padSpacing", 5f);
+        numPadsHor = PlayerPrefs.GetInt("numPadsHor", 11);
+        numPadsVert = PlayerPrefs.GetInt("numPadsVert", 11);
         lvlGen = GameObject.Find("LevelGen").GetComponentInChildren<LevelGenerator>();
         lvlGen.GetCustomParams();
         TurretSpawn.position = padTransform.position;
@@ -77,7 +84,7 @@ public class PadController : MonoBehaviour
         padPos = padTransform.position;
         spot.intensity = 0f;
         
-        float spawnRange = lvlGen.padSpacingVert + 2;
+        float spawnRange = padSpacingVert + 2;
         
         if (padPos.x == 0 && padPos.z == 0)
         {
@@ -117,6 +124,10 @@ public class PadController : MonoBehaviour
             {
                 right = hitright.collider.GetComponent<PadController>();
             }
+            else
+            {
+                right = null;
+            }
 
         }
         RaycastHit hitleft;
@@ -126,6 +137,10 @@ public class PadController : MonoBehaviour
             if (hitleft.collider.tag == "Pads")
             {
                 left = hitleft.collider.GetComponent<PadController>();
+            }
+            else
+            {
+                left = null;
             }
 
 
@@ -153,6 +168,10 @@ public class PadController : MonoBehaviour
             {
                 front = hitfront.collider.GetComponent<PadController>();
             }
+            else
+            {
+                front = null;
+            }
 
 
         }
@@ -165,6 +184,10 @@ public class PadController : MonoBehaviour
             {
                 back = hitback.collider.GetComponent<PadController>();
             }
+            else
+            {
+                back = null;
+            }
 
 
         }
@@ -176,6 +199,10 @@ public class PadController : MonoBehaviour
             {
                 right = hitright.collider.GetComponent<PadController>();
             }
+            else
+            {
+                right = null;
+            }
 
         }
         RaycastHit hitleft;
@@ -185,6 +212,10 @@ public class PadController : MonoBehaviour
             if (hitleft.collider.tag == "Pads")
             {
                 left = hitleft.collider.GetComponent<PadController>();
+            }
+            else
+            {
+                left = null;
             }
 
 

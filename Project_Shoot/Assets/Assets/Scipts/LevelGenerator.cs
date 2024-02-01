@@ -60,7 +60,7 @@ public class LevelGenerator : MonoBehaviour
     public void SpawnTurrets()
     {
         
-        for (float i = rightWall.position.x + padSpacingVert - 0.5f; i <= leftWall.position.x; i = i + padSpacingVert)
+        for (float i = rightWall.position.x + padSpacingVert; i <= leftWall.position.x; i = i + padSpacingVert)
         {
             TurretSpawn.eulerAngles = new Vector3(TurretSpawn.eulerAngles.x, 180f, TurretSpawn.eulerAngles.z); //do bottom wall
             //TurretSpan.localScale = 
@@ -75,7 +75,7 @@ public class LevelGenerator : MonoBehaviour
             turretBoi.dirFront = 1f;
         }
         
-        for (float i = frontWall.position.z + padSpacingVert-0.5f; i <= backWall.position.z; i = i + padSpacingVert)
+        for (float i = frontWall.position.z + padSpacingVert; i <= backWall.position.z; i = i + padSpacingVert)
         {
             TurretSpawn.eulerAngles = new Vector3(TurretSpawn.eulerAngles.x, 270, TurretSpawn.eulerAngles.z); //do left wall
             TurretSpawn.position = new Vector3(leftWall.position.x, TurretSpawn.position.y, i);

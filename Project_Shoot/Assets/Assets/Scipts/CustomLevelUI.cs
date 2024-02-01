@@ -39,8 +39,8 @@ public class CustomLevelUI : MonoBehaviour
     public void UpdatePrefs()
     {
         PlayerPrefs.SetFloat("padSpacing", PadSpacing.value);
-        PlayerPrefs.SetInt("numPadsHor", (int)NumPadsHor.value);
-        PlayerPrefs.SetInt("numPadsVert", (int) NumPadsVert.value);
+        PlayerPrefs.SetInt("numPadsHor", (int)(NumPadsHor.value*2+1));
+        PlayerPrefs.SetInt("numPadsVert", (int) NumPadsVert.value*2+1);
         PlayerPrefs.SetFloat("TurretAnimationSpeed", TurrAnimationSpeed.value);
         PlayerPrefs.SetFloat("BulletSpeed", BulletSpeed.value);
         PlayerPrefs.SetFloat("PulseInterval", PulseInterval.value);
@@ -80,8 +80,8 @@ public class CustomLevelUI : MonoBehaviour
 
     public void UpdateTest()
     {
-        NumPadsVertTxt.text = "Rows of pads : " + NumPadsVert.value.ToString();
-        NumPadsHorTxt.text = "Columns of pads : " + NumPadsHor.value.ToString();
+        NumPadsVertTxt.text = "Rows of pads : " + (NumPadsVert.value * 2 + 1).ToString();
+        NumPadsHorTxt.text = "Columns of pads : " + (NumPadsHor.value * 2 + 1).ToString();
         PadSpacingTxt.text = "Pad spacing : " + Math.Round(PadSpacing.value, 2).ToString();
         TurrAnimationSpeedTxt.text = "Turret Animation Speed: " + Math.Round(TurrAnimationSpeed.value, 2).ToString();
         BulletSpeedTxt.text = "Bullet Speed: " + Math.Round(BulletSpeed.value, 2).ToString();
@@ -106,8 +106,8 @@ public class CustomLevelUI : MonoBehaviour
     public void CalculateMulti(float score)
     {
         
-        score +=ScoreMultiplier(NumPadsVert.value, 21, 5, 2);
-        score += ScoreMultiplier(NumPadsHor.value, 21, 5, 2);
+        score +=ScoreMultiplier(NumPadsVert.value, 10, 2, 2);
+        score += ScoreMultiplier(NumPadsHor.value, 10, 2, 2);
         score += ScoreMultiplier(TurrAnimationSpeed.value, 0.5f, 2f, 0.5f);
         score += ScoreMultiplier(BulletSpeed.value, 0.05f, 3f, 5f);
         score += ScoreMultiplier(PulseInterval.value, 10f, 0.5f, 2f) * PlayerPrefs.GetInt("WillPulse", 1) + PlayerPrefs.GetInt("WillPulse", 1);

@@ -10,7 +10,7 @@ public class Scoring : MonoBehaviour
 {
     public float minx,minz,maxx,maxz,spacing,TargetLife,turretCounter, turretLimit, TargetPoints, score, SpawnTime, CurrentHighScore;
     public ShootRay shooter;
-    public int numTargets,missedTargets,maxTargetsmissed,waves,wavesToUpgrade;
+    public int numTargets,missedTargets,maxTargetsmissed,waves,wavesToUpgrade,spawnIncrement;
     public GameObject TargetBoi,NormalUI,GameOverScreen,GameOverButton;
     public AnimationCurve ScoreCurve;
     public Vector3[] TargetPos;
@@ -45,7 +45,8 @@ public class Scoring : MonoBehaviour
     {
         if (waves>wavesToUpgrade)
         {
-            numTargets += 1;
+            numTargets += spawnIncrement;
+            waves = 0;
         }
     }
     void OnFire() {
