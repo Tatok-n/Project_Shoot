@@ -32,7 +32,7 @@ public class PadController : MonoBehaviour
 
     public void SpawnPadRight()
     {
-        if (padPos.x != ((numPadsHor - 1) / 2 * padSpacingVert))
+        if (padPos.x <= ((numPadsHor - 1) / 2 * padSpacingVert))
         {
             right = Instantiate(Pad, new Vector3(padPos.x + padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
         }
@@ -42,7 +42,7 @@ public class PadController : MonoBehaviour
 
     public void SpawnPadLeft()
     {
-        if (padPos.x != (-(numPadsHor - 1) / 2 * padSpacingVert))
+        if (padPos.x >= (-(numPadsHor - 1) / 2 * padSpacingVert))
         {
             left = Instantiate(Pad, new Vector3(padPos.x - padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>(); ; ;
         }
@@ -73,80 +73,8 @@ public class PadController : MonoBehaviour
     }
     void Awake()
     {
-        padSpacingVert = PlayerPrefs.GetFloat("padSpacing", 5f);
-        numPadsHor = PlayerPrefs.GetInt("numPadsHor", 11);
-        numPadsVert = PlayerPrefs.GetInt("numPadsVert", 11);
-        lvlGen = GameObject.Find("LevelGen").GetComponentInChildren<LevelGenerator>();
-        lvlGen.GetCustomParams();
-        TurretSpawn.position = padTransform.position;
-        TurretSpawn.rotation = padTransform.rotation;
-        TurretSpawn.localScale = new Vector3(0.5f,3f,0.5f);
-        padPos = padTransform.position;
-        spot.intensity = 0f;
-        
-        float spawnRange = padSpacingVert + 2;
-        
-        if (padPos.x == 0 && padPos.z == 0)
-        {
-            SpawnPadBack();
-            SpawnPadFront();
-            SpawnPadLeft();
-            SpawnPadRight();
-        }
-        else if (padPos.z == 0 && padPos.x > 0)
-        {
-            SpawnPadBack();
-            SpawnPadFront();
-            SpawnPadRight();
 
-        }
-        else if (padPos.z == 0 && padPos.x < 0)
-        {
-            SpawnPadBack();
-            SpawnPadFront();
-            SpawnPadLeft();
-        } else if (padPos.z <0)
-        {
-           SpawnPadFront();
-        }
-        else if (padPos.z > 0)
-        {
-            SpawnPadBack();
-        }
-
-
-
-        RaycastHit hitright;
-        if (Physics.Raycast(rightemitter.position, transform.TransformDirection(Vector3.right), out hitright, 100f))
-        {
-
-            if (hitright.collider.tag == "Pads")
-            {
-                right = hitright.collider.GetComponent<PadController>();
-            }
-            else
-            {
-                right = null;
-            }
-
-        }
-        RaycastHit hitleft;
-        if (Physics.Raycast(leftemitter.position, transform.TransformDirection(Vector3.left), out hitleft, 100f))
-        {
-
-            if (hitleft.collider.tag == "Pads")
-            {
-                left = hitleft.collider.GetComponent<PadController>();
-            }
-            else
-            {
-                left = null;
-            }
-
-
-        }
-
-
+        findFriends();
 
     }
     void OnTriggerEnter(Collider other) {
@@ -158,7 +86,7 @@ public class PadController : MonoBehaviour
         }
     }
 
-    void Start()
+    void findFriends()
     {
         RaycastHit hitfront;
         if (Physics.Raycast(frontemitter.position, transform.TransformDirection(Vector3.forward), out hitfront, 100f))
@@ -221,6 +149,53 @@ public class PadController : MonoBehaviour
 
         }
     }
+
+    void Start()
+    {
+        padSpacingVert = PlayerPrefs.GetFloat("padSpacing", 5f);
+        numPadsHor = PlayerPrefs.GetInt("numPadsHor", 11);
+        numPadsVert = PlayerPrefs.GetInt("numPadsVert", 11);
+        lvlGen = GameObject.Find("LevelGen").GetComponentInChildren<LevelGenerator>();
+        lvlGen.GetCustomParams();
+        TurretSpawn.position = padTransform.position;
+        TurretSpawn.rotation = padTransform.rotation;
+        TurretSpawn.localScale = new Vector3(0.5f, 3f, 0.5f);
+        padPos = padTransform.position;
+        spot.intensity = 0f;
+
+        float spawnRange = padSpacingVert + 2;
+
+        if (padPos.x == 0 && padPos.z == 0)
+        {
+            SpawnPadBack();
+            SpawnPadFront();
+            SpawnPadLeft();
+            SpawnPadRight();
+        }
+        else if (padPos.z == 0 && padPos.x > 0)
+        {
+            SpawnPadBack();
+            SpawnPadFront();
+            SpawnPadRight();
+
+        }
+        else if (padPos.z == 0 && padPos.x < 0)
+        {
+            SpawnPadBack();
+            SpawnPadFront();
+            SpawnPadLeft();
+        }
+        else if (padPos.z < 0)
+        {
+            SpawnPadFront();
+        }
+        else if (padPos.z > 0)
+        {
+            SpawnPadBack();
+        }
+
+        
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -236,6 +211,8 @@ public class PadController : MonoBehaviour
         if (mov!= null && !mov.CloseEnough(padPos, new Vector3 (mov.player.position.x,mov.groundval,mov.player.position.z), 1f)) {
             touchingPlayer = false;
         }
+
+        findFriends();
 
        
     }
