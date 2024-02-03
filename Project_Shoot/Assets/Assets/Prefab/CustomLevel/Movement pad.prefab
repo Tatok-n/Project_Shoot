@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7912129549484846944
+--- !u!1001 &6690108479588105569
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 2100628343219672246, guid: 772c18c7f372b5a4f8195c4471313308,
         type: 3}
       propertyPath: m_Name
-      value: Movement pad Variant
+      value: Movement pad
       objectReference: {fileID: 0}
     - target: {fileID: 2100628343219672246, guid: 772c18c7f372b5a4f8195c4471313308,
         type: 3}
@@ -177,7 +177,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Pad
       value: 
-      objectReference: {fileID: 8136713419078482902}
+      objectReference: {fileID: 4755489418990889431}
     - target: {fileID: 8411337357353508608, guid: 772c18c7f372b5a4f8195c4471313308,
         type: 3}
       propertyPath: m_Layer
@@ -193,9 +193,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772c18c7f372b5a4f8195c4471313308, type: 3}
---- !u!1 &8136713419078482902 stripped
+--- !u!1 &4755489418990889431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2100628343219672246, guid: 772c18c7f372b5a4f8195c4471313308,
     type: 3}
-  m_PrefabInstance: {fileID: 7912129549484846944}
+  m_PrefabInstance: {fileID: 6690108479588105569}
   m_PrefabAsset: {fileID: 0}

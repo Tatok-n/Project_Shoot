@@ -7,7 +7,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public Material FloorMat;
-    public Transform FloorTransform, leftWall, rightWall, frontWall, backWall,TurretSpawn, TurretContainer;
+    public Transform FloorTransform, leftWall, rightWall, frontWall, backWall,TurretSpawn, TurretContainer,LB,RB,LF,RF;
     public float padSpacingHor, padSpacingVert;
     public int numPadsHor, numPadsVert;
     public GameObject Turret;
@@ -16,7 +16,7 @@ public class LevelGenerator : MonoBehaviour
     void Awake()
     {
         GetCustomParams();
-        SetFloor();
+        SetFloor(); 
         SetWalls();
         SpawnTurrets();
     }
@@ -53,6 +53,12 @@ public class LevelGenerator : MonoBehaviour
         rightWall.position = rightWallpos;   
         backWall.position = backWallpos; 
         frontWall.position = frontWallpos;
+
+        LB.position = new Vector3(leftWallpos.x, 7, backWallpos.z);
+        RB.position = new Vector3(rightWallpos.x, 7, backWallpos.z);
+        LF.position = new Vector3(leftWallpos.x, 7, frontWallpos.z);
+        RF.position = new Vector3(rightWallpos.x, 7, frontWallpos.z);
+
 
 
     }
