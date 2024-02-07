@@ -3684,7 +3684,7 @@ PrefabInstance:
     - target: {fileID: 7741192915596329338, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: spawnNewTargetsOnBreak
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7741192916281285173, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
@@ -3709,12 +3709,12 @@ PrefabInstance:
     - target: {fileID: 7741192916468483644, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7741192916468483644, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7741192916468483644, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
