@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TargetController : MonoBehaviour
 {
-    
-    public GameObject Player,ThisBoi;
+
+    public GameObject Player;
     public Scoring ScoreBoi;
 
     public float MaxTime, LifeTime;
