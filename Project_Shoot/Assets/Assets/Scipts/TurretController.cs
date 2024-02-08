@@ -18,13 +18,17 @@ public class TurretController : MonoBehaviour
     public bool Shoot,playanimation;
 
     public PewPewController shot;
+    public AudioSource turreShot;
     // Start is called before the first frame update
     void Awake()
     {
         Child = GameObject.Find("PewPew Shot");
 
     }
-
+    public void PlaySound()
+    {
+        turreShot.Play();
+    }
     public void TurretShoot() {
         if (playanimation) {
             spawnEffect.Play();
@@ -44,6 +48,7 @@ public class TurretController : MonoBehaviour
             GameObject projectileIntantiated = Instantiate(Child, newtrans);
             shot = projectileIntantiated.GetComponent<PewPewController>();
             projectileIntantiated.GetComponent<Transform>().position = newtrans.position;
+            //PlaySound();
             shot.speed = BulletSpeed;
             Shoot = false;
             lifetime = 0f;

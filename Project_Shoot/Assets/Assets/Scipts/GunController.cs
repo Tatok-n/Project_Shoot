@@ -14,6 +14,7 @@ public class GunController : MonoBehaviour
     public Vector3 originalRot, newPos,newRot,offset,MovPos;
     public float ShootingTime,ShootingSpeed,ShootingScale,rotScale,MovingTime,MovingSpeed,MovingScale,Xmov,ZMov;
     public VisualEffect  gunanimation;
+    public AudioSource gunShot;
 
     
     // Start is called before the first frame update
@@ -23,12 +24,19 @@ public class GunController : MonoBehaviour
         originalRot= gun.localEulerAngles;
         offset = gun.localPosition - cam.localPosition;
     }
+
+    public void ShootSound()
+    {
+        gunShot.Play();
+
+    }
     void FireAnimation() {
         
         newRot = new Vector3 (originalRot.x + ShootingCurve.Evaluate(ShootingTime)*rotScale, originalRot.y  , originalRot.z);
         newPos = new Vector3 ((cam.localPosition + offset).x, (cam.localPosition + offset).y + ShootingCurve.Evaluate(ShootingTime)*ShootingScale, (cam.localPosition + offset).z);
         gun.transform.localPosition = newPos;
         gun.transform.localEulerAngles = newRot;
+        
         if (ShootingTime < 1f) {
             ShootingTime += ShootingSpeed/60;
         } else {

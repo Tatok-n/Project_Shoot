@@ -278,7 +278,8 @@ public class Movement : MonoBehaviour
         System.Random rnd = new System.Random();
         randpick = rnd.Next(pads.Length);
         pads[randpick].Topulse = true;
-     }
+        pads[randpick].pulseSound.Play();
+        }
 
     }
 }

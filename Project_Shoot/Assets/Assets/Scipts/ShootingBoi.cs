@@ -9,6 +9,7 @@ public class ShootingBoi : MonoBehaviour
     public AnimationCurve lightStr;
     public Color lightcolor;
     public bool hasFlash;
+    public AudioSource impactSound;
 
     public Light flash;
     // Start is called before the first frame update
@@ -26,5 +27,11 @@ public class ShootingBoi : MonoBehaviour
         if (life>1) {
             Destroy(this.gameObject);
         }
+    }
+
+    public void PlayImpact()
+    {
+        impactSound.time = 0.35f;
+        impactSound.Play();
     }
 }

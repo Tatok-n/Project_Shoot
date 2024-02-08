@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +29,13 @@ public class PadController : MonoBehaviour
     int numPadsHor;
     int numPadsVert;
 
+    public AudioSource pulseSound;
+
     // Start is called before the first frame update
+    public void PlaySound()
+    {
+        pulseSound.Play();
+    }
 
     public void SpawnPadRight()
     {
@@ -39,7 +46,7 @@ public class PadController : MonoBehaviour
           
             
     }
-
+   
     public void SpawnPadLeft()
     {
         if (padPos.x >= (-(numPadsHor - 1) / 2 * padSpacingVert))
@@ -231,6 +238,7 @@ public class PadController : MonoBehaviour
             recLeft = false;
             recRight = false;
             pulsefx.Play();
+         
             if (touchingPlayer) {
                 score.GameOver();
             }

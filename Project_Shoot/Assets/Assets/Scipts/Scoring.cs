@@ -52,9 +52,14 @@ public class Scoring : MonoBehaviour
     void OnFire() {
         score += shooter.Fire();
         UpdateUI();
+        gun.ShootSound();
         gun.fire = true;
         gun.ShootingTime = 0f;
-        Instantiate(ShootingAnimation, ShootingPos.position, ShootingPos.rotation);
+        ShootingBoi Impact = Instantiate(ShootingAnimation, ShootingPos.position, ShootingPos.rotation).GetComponent<ShootingBoi>() ;
+        if (shooter.Fire()!=0)
+        {
+            Impact.PlayImpact();
+        }
     }
     // Update is called once per frame
     void Update()
