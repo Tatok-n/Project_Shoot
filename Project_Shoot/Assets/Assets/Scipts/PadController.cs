@@ -39,7 +39,7 @@ public class PadController : MonoBehaviour
 
     public void SpawnPadRight()
     {
-        if (padPos.x <= ((numPadsHor - 1) / 2 * padSpacingVert))
+        if (padPos.x < ((numPadsHor - 1) / 2 * padSpacingVert))
         {
             right = Instantiate(Pad, new Vector3(padPos.x + padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>();
         }
@@ -49,7 +49,7 @@ public class PadController : MonoBehaviour
    
     public void SpawnPadLeft()
     {
-        if (padPos.x >= (-(numPadsHor - 1) / 2 * padSpacingVert))
+        if (padPos.x > (-(numPadsHor - 1) / 2 * padSpacingVert))
         {
             left = Instantiate(Pad, new Vector3(padPos.x - padSpacingVert, padPos.y, padPos.z), padTransform.rotation, ParentTransform).GetComponentInChildren<PadController>(); ; ;
         }

@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 using System;
 using System.Linq;
 using TMPro;
+using System.Collections.Generic;
+
+
 
 public class Scoring : MonoBehaviour
 {
@@ -21,8 +24,9 @@ public class Scoring : MonoBehaviour
     public Transform ShootingPos;
     public TurretController[] turrets;
     public Movement mov;
+    public List<TargetController> targets = new List<TargetController>();
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         maxx = mov.left.position.x;
         minx = mov.right.position.x;
@@ -30,12 +34,36 @@ public class Scoring : MonoBehaviour
         minz = mov.front.position.z;
         waves = 0;
         score = 0f;
-        
-        
+
+        if (PlayerPrefs.GetInt("Upgrades") == 1)
+        {
+            increasingTargets = true;
+        } else
+        {
+            increasingTargets = false;
+        }
+
+
+        if (PlayerPrefs.GetInt("SpawnOnBreak") == 1)
+        {
+            spawnNewTargetsOnBreak = true;
+        }
+        else
+        {
+            spawnNewTargetsOnBreak = false;
+        }
+
         if (increasingTargets)
         {
             numTargets = 1;
-        } else {
+        } else if(!spawnNewTargetsOnBreak)
+        {
+            spawnTargets(numTargets);
+        }
+        
+        if (spawnNewTargetsOnBreak)
+        {
+         
             spawnTargets(numTargets);
         }
         
@@ -75,6 +103,7 @@ public class Scoring : MonoBehaviour
                 incrementTargets();
                 spawnTargets(numTargets);
             }
+            
         }
 
         if (missedTargets>=maxTargetsmissed) {
@@ -138,7 +167,7 @@ public class Scoring : MonoBehaviour
         }
 
         foreach (Vector3 TarPos in TargetPos) {
-            Instantiate(TargetBoi, TarPos, TargetBoi.transform.rotation);
+          targets.Add(Instantiate(TargetBoi, TarPos, TargetBoi.transform.rotation).GetComponent<TargetController>());
 
         }
     }
@@ -152,7 +181,8 @@ public class Scoring : MonoBehaviour
         pos.x = minx + randomX*spacing;
         pos.z = minz + randomZ*spacing;
         pos.y = randomY;
-        Instantiate(TargetBoi, pos, TargetBoi.transform.rotation);
+        
+        targets.Add(Instantiate(TargetBoi, pos, TargetBoi.transform.rotation).GetComponent<TargetController>());
 
     }
 
