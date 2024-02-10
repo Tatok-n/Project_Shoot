@@ -9,6 +9,7 @@ public class Pause : MonoBehaviour
     public FirstPersonCameraRotation fps;
     public bool GameEND = false;
     public Pause PAPA;
+    public Scoring scoreBoi;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class Pause : MonoBehaviour
     }
 
     public void StartPauseMenu() {
+        scoreBoi.isPaused = true;
         if (GameEND) { return; }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -33,6 +35,7 @@ public class Pause : MonoBehaviour
     }
 
     public void ExitPauseMenu() {
+        scoreBoi.isPaused = false;
         if (GameEND) { return; }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

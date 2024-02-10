@@ -668,7 +668,7 @@ PrefabInstance:
     - target: {fileID: 5722022626014232934, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 5722022626014232935, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
@@ -1083,7 +1083,7 @@ GameObject:
   - component: {fileID: 902400444}
   - component: {fileID: 902400443}
   - component: {fileID: 902400446}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Left
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1224,7 +1224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1074005192}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 1160723514}
   - component: {fileID: 1160723513}
   - component: {fileID: 1160723516}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Right
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -2815,7 +2815,7 @@ GameObject:
   - component: {fileID: 1596783941}
   - component: {fileID: 1596783940}
   - component: {fileID: 1596783943}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Back
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -3048,6 +3048,11 @@ PrefabInstance:
       propertyPath: fps
       value: 
       objectReference: {fileID: 967645907}
+    - target: {fileID: 2355029394064995076, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: scoreBoi
+      value: 
+      objectReference: {fileID: 8758694}
     - target: {fileID: 2654999748054596869, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3168,6 +3173,11 @@ PrefabInstance:
       propertyPath: fps
       value: 
       objectReference: {fileID: 967645907}
+    - target: {fileID: 6998410288818467920, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: scoreBoi
+      value: 
+      objectReference: {fileID: 8758694}
     - target: {fileID: 7634359806598811266, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3406,7 +3416,7 @@ GameObject:
   - component: {fileID: 1744542983}
   - component: {fileID: 1744542982}
   - component: {fileID: 1744542985}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Front
   m_TagString: Wall
   m_Icon: {fileID: 0}

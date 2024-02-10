@@ -1063,6 +1063,7 @@ MonoBehaviour:
   fps: {fileID: 0}
   GameEND: 0
   PAPA: {fileID: 1598806248}
+  scoreBoi: {fileID: 0}
 --- !u!114 &462843425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3734,6 +3735,11 @@ PrefabInstance:
       propertyPath: fps
       value: 
       objectReference: {fileID: 1598806245}
+    - target: {fileID: 2355029394064995076, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: scoreBoi
+      value: 
+      objectReference: {fileID: 1598806252}
     - target: {fileID: 2654999748054596869, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3869,6 +3875,11 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1598806246}
+    - target: {fileID: 6998410288818467920, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: scoreBoi
+      value: 
+      objectReference: {fileID: 1598806252}
     - target: {fileID: 6998410288818467920, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: settings

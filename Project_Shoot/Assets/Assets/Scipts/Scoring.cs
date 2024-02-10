@@ -17,7 +17,7 @@ public class Scoring : MonoBehaviour
     public GameObject TargetBoi,NormalUI,GameOverScreen,GameOverButton;
     public AnimationCurve ScoreCurve;
     public Vector3[] TargetPos;
-    public bool spawnNewTargetsOnBreak,increasingTargets;
+    public bool spawnNewTargetsOnBreak,increasingTargets,isPaused;
     public GunController gun;
     public TextMeshProUGUI ScoreUI,MissedUI,HighScore;
     public GameObject ShootingAnimation;
@@ -78,6 +78,10 @@ public class Scoring : MonoBehaviour
         }
     }
     void OnFire() {
+        if (isPaused)
+        {
+            return;
+        }
         score += shooter.Fire();
         UpdateUI();
         gun.ShootSound();
