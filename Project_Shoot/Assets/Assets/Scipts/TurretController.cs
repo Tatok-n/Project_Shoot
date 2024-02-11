@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,16 +10,19 @@ public class TurretController : MonoBehaviour
     public VisualEffect spawnEffect;
     public float radius,lifetime,DefRad,Speed,dirFront,dirRight,BulletSpeed;
     public Vector3 Spherepos,DefPos;
-    public int spawnRate;
+    public int spawnRate,friendCount;
     public Transform spawnpos,turrettrans,newtrans;
 
     public AnimationCurve radiusCurve, PosCurve;
     public GameObject Child;
 
-    public bool Shoot,playanimation;
+    public bool Shoot, playanimation;
 
     public PewPewController shot;
     public AudioSource turreShot;
+
+    public TurretController leftTurret, RightTurret;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -66,5 +70,43 @@ public class TurretController : MonoBehaviour
             TurretShoot();
             playanimation = true;
         }
+
+        if (friendCount < 2)
+        {
+            RaycastHit rightEm;
+            if (Physics.Raycast(turrettrans.position, transform.forward, out rightEm, 10f))
+            {
+                if (rightEm.collider.tag == "Wall")
+                {
+                    RightTurret = null;
+                    friendCount = 1;
+                } else if (rightEm.collider.tag == "Turret")
+                {
+                    RightTurret = rightEm.collider.GetComponent<TurretController>();
+                    friendCount ++;
+                }
+            }
+
+        }
+
+        if (friendCount < 2)
+        {
+            RaycastHit leftEm;
+            if (Physics.Raycast(turrettrans.position, -transform.forward, out leftEm, 10f))
+            {
+                if (leftEm.collider.tag == "Wall")
+                {
+                    leftTurret = null;
+                    friendCount = 1;
+                }
+                else if (leftEm.collider.tag == "Turret")
+                {
+                    leftTurret = leftEm.collider.GetComponent<TurretController>();
+                    friendCount++;
+                }
+            }
+
+        }
+
     }
 }

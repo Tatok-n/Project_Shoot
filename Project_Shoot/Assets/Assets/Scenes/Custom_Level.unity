@@ -690,10 +690,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223955262826576504, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 1433687541346060088, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.149
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408710173018173366, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4320974742070590949, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
@@ -755,6 +790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallShooter
       objectReference: {fileID: 0}
+    - target: {fileID: 4686119856263499675, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 5621001744103159140, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
       propertyPath: turreShot
@@ -770,6 +810,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -24.35
       objectReference: {fileID: 0}
+    - target: {fileID: 8015108630789531672, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375367077155962003, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 9183006044216993321, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -780,7 +830,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8015108630789531672, guid: 8e09bd534cfb0d642b9dab86d2baa055, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1396,7 +1447,7 @@ GameObject:
   - component: {fileID: 1074005192}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

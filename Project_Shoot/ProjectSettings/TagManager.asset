@@ -9,6 +9,7 @@ TagManager:
   - PewPew
   - Assist
   - Wall
+  - Turret
   layers:
   - Default
   - TransparentFX
