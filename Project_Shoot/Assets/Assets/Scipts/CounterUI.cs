@@ -24,6 +24,7 @@ public class CounterUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoring.targets.RemoveAll(x => x == null);
         foreach (Transform child in this.GetComponentsInChildren<Transform>())
         {
             if (this.GetComponent<Transform>().Equals(child)) { continue; }
