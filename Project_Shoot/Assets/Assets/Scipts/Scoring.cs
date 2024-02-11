@@ -6,6 +6,9 @@ using System;
 using System.Linq;
 using TMPro;
 using System.Collections.Generic;
+using System.Diagnostics;
+
+
 
 
 
@@ -25,9 +28,11 @@ public class Scoring : MonoBehaviour
     public TurretController[] turrets;
     public Movement mov;
     public List<TargetController> targets = new List<TargetController>();
+    public TurretController[] cardinalTurrets = new TurretController[4];
     // Start is called before the first frame update
     void OnEnable()
     {
+        cardinalTurrets = new TurretController[4];
         maxx = mov.left.position.x;
         minx = mov.right.position.x;
         maxz = mov.back.position.z;
@@ -113,18 +118,21 @@ public class Scoring : MonoBehaviour
         if (missedTargets>=maxTargetsmissed) {
             GameOver();
         }
-
+        CardinalTurretManager();
         turretCounter += Time.deltaTime;
         if (turretCounter>=turretLimit) {
-            System.Random rnd1 = new System.Random();
-            TurretController tur = turrets[rnd1.Next(0,turrets.Length-1)];
+            TurretController tur = cardinalTurrets[UnityEngine.Random.Range(0,4)];
+            
             if (tur.Shoot) {
-                tur =  turrets[rnd1.Next(0,turrets.Length)];
+                tur = cardinalTurrets[UnityEngine.Random.Range(0, 4)];
             }
-            tur.Fire();
+            tur.ShootRecurs(UnityEngine.Random.Range(0, 5));
             turretCounter = 0f;
         }
-        
+
+       
+
+
     }
 
     public void GameOver() {
@@ -193,5 +201,53 @@ public class Scoring : MonoBehaviour
     public void UpdateUI () {
         ScoreUI.text = "Current score: " + Mathf.Round(score).ToString();
         MissedUI.text = "Missed targets: " + (missedTargets).ToString();
+    }
+
+    public void CardinalTurretManager()
+    {
+        int layerMask = 1 << 6;
+        layerMask = ~layerMask;
+        RaycastHit Front;
+        Vector3 EmPos = new Vector3(mov.player.position.x, mov.player.position.y + 0.3f, mov.player.position.z);
+        if (Physics.Raycast(EmPos, transform.forward, out Front, 100f, layerMask))
+        {
+           
+            if (Front.collider.tag == "Turret")
+            {
+
+                cardinalTurrets[0] = Front.collider.GetComponent<TurretController>();
+            }
+           
+        }
+        RaycastHit Back;
+        if (Physics.Raycast(EmPos, -transform.forward, out Back, 100f, layerMask))
+        {
+            
+            if (Back.collider.tag == "Turret")
+            {
+                cardinalTurrets[1] = Back.collider.GetComponent<TurretController>();
+            }
+
+        }
+        RaycastHit Right;
+        if (Physics.Raycast(EmPos, transform.right, out Right, 100f, layerMask))
+            {
+                
+            if (Right.collider.tag == "Turret")
+            {
+                cardinalTurrets[2] = Right.collider.GetComponent<TurretController>();
+            }
+
+        }
+        RaycastHit Left;
+        if (Physics.Raycast(EmPos, -transform.right, out Left, 100f, layerMask))
+                {
+                    
+            if (Left.collider.tag == "Turret")
+            {
+                cardinalTurrets[3] = Left.collider.GetComponent<TurretController>();
+            }
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -62,6 +63,38 @@ public class TurretController : MonoBehaviour
     public void Fire() {
         Shoot = true;
         spawnEffect.Play();
+    }
+
+    public void ShootRecurs(int depth)
+    {
+        
+        if (depth == 0) {
+            Fire();
+            UnityEngine.Debug.Log(depth);
+            return;
+        }
+       
+        int LeftRight = UnityEngine.Random.Range(0, 2);
+        if (LeftRight ==1 ) { 
+            if (leftTurret!=null)
+            {
+                leftTurret.ShootRecurs(depth - 1);
+            } else
+            {
+                Fire();
+            }
+        }
+        if (LeftRight == 0)
+        {
+            if (RightTurret != null)
+            {
+                RightTurret.ShootRecurs(depth - 1);
+            }
+            else
+            {
+                Fire();
+            }
+        }
     }
     // Update is called once per frame
     void FixedUpdate()

@@ -2015,10 +2015,40 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123967617212610244, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223955262826576504, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 1433687541346060088, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.149
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408710173018173366, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4320974742070590949, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
@@ -2080,6 +2110,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallShooter
       objectReference: {fileID: 0}
+    - target: {fileID: 4686119856263499675, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 5621001744103159140, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
       propertyPath: turreShot
@@ -2109,6 +2144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -24.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375367077155962003, guid: 8e09bd534cfb0d642b9dab86d2baa055,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 9183006044216993321, guid: 8e09bd534cfb0d642b9dab86d2baa055,
         type: 3}
