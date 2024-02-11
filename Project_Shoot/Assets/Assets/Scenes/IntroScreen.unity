@@ -208,7 +208,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &30935718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +1660,7 @@ MonoBehaviour:
   m_MinValue: 0.5
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 2
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   m_MinValue: 0.5
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 2
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5911,7 +5911,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 40
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7863,7 +7863,7 @@ MonoBehaviour:
   m_MinValue: 0.05
   m_MaxValue: 3
   m_WholeNumbers: 0
-  m_Value: 2
+  m_Value: 0.62
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7990,7 +7990,7 @@ MonoBehaviour:
   m_MinValue: 0.5
   m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 2
+  m_Value: 6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
