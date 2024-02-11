@@ -143,8 +143,8 @@ public class Scoring : MonoBehaviour
             mov.PauseHandler.PauseMenu.SetActive(false);
             NormalUI.SetActive(false);
             Time.timeScale = 0f;
-        mov.PauseHandler.StartPauseMenu();
-        mov.PauseHandler.GameEND = true;
+            mov.PauseHandler.StartPauseMenu();
+            mov.PauseHandler.GameEND = true;
             GameOverScreen.SetActive(true);
             GameOverButton.SetActive(false);
 

@@ -21,7 +21,9 @@ public class Pause : MonoBehaviour
     {
         PAPA.ExitPauseMenu();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
+        Time.timeScale = 1f;
+
+
     }
 
     public void StartPauseMenu() {

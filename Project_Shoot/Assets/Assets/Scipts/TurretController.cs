@@ -70,10 +70,9 @@ public class TurretController : MonoBehaviour
         
         if (depth == 0) {
             Fire();
-            UnityEngine.Debug.Log(depth);
             return;
         }
-       
+      
         int LeftRight = UnityEngine.Random.Range(0, 2);
         if (LeftRight ==1 ) { 
             if (leftTurret!=null)

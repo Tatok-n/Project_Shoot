@@ -3504,6 +3504,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4492534925600957610, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.4334187
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492534925600957610, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.44890404
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492534925600957610, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.55725974
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492534925600957610, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.54780936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492534925600957610, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 4689243665188990643, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: CounterText
@@ -3719,6 +3744,11 @@ PrefabInstance:
       propertyPath: shooter
       value: 
       objectReference: {fileID: 1938076953}
+    - target: {fileID: 8224441933547109163, guid: 6f8fd7291cd35284c88257c14c377eb4,
+        type: 3}
+      propertyPath: rotScale
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8224441933547109163, guid: 6f8fd7291cd35284c88257c14c377eb4,
         type: 3}
       propertyPath: gunanimation
