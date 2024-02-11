@@ -161,18 +161,18 @@ public class Scoring : MonoBehaviour
         Vector3 pos = new Vector3(0f,0f,0f);
         System.Random rnd = new System.Random();
         for (int i = 0; i< number; i++){
-            int randomX = rnd.Next(0,(int) Math.Floor((maxx-minx)/spacing));
-            int randomZ = rnd.Next(0,(int) Math.Floor((maxz-minz)/spacing));
+            int randomX = rnd.Next(0,(int) Math.Floor(((maxx-1)- (minx + 1)) /spacing));
+            int randomZ = rnd.Next(0,(int) Math.Floor(((maxz-1)- (minz + 1)) /spacing));
             int  randomY = rnd.Next(1,10);
             pos.x = minx + randomX*spacing;
             pos.z = minz + randomZ*spacing;
             pos.y = randomY;
             while (TargetPos.Contains(pos)) {
-                randomX = rnd.Next(0,(int) Math.Floor((maxx-minx)/spacing));
-                randomZ = rnd.Next(0,(int) Math.Floor((maxz-minz)/spacing));
+                randomX = rnd.Next(0,(int) Math.Floor(((maxx - 1) - (minx + 1)) /spacing));
+                randomZ = rnd.Next(0,(int) Math.Floor(((maxz-1)- (minz + 1)) /spacing));
                 randomY = rnd.Next(1,10);
-                pos.x = minx + randomX*spacing;
-                pos.z = minz + randomZ*spacing;
+                pos.x = (minx + 1) + randomX*spacing;
+                pos.z = (minz + 1) + randomZ*spacing;
                 pos.y = randomY;
             }
             TargetPos[i] = pos;
@@ -187,11 +187,11 @@ public class Scoring : MonoBehaviour
     public void spawnTarget() {
         Vector3 pos = new Vector3(0f,0f,0f);
         System.Random rnd = new System.Random();
-        int randomX = rnd.Next(0,(int) Math.Floor((maxx-minx)/spacing));
-        int randomZ = rnd.Next(0,(int) Math.Floor((maxz-minz)/spacing));
+        int randomX = rnd.Next(0,(int)Math.Floor(((maxx - 1) - (minx + 1)) / spacing));
+        int randomZ = rnd.Next(0,(int)Math.Floor(((maxz - 1) - (minz + 1)) / spacing));
         int  randomY = rnd.Next(1,10);
-        pos.x = minx + randomX*spacing;
-        pos.z = minz + randomZ*spacing;
+        pos.x = (minx + 1) + randomX * spacing;
+        pos.z = (minz + 1) + randomZ * spacing;
         pos.y = randomY;
         
         targets.Add(Instantiate(TargetBoi, pos, TargetBoi.transform.rotation).GetComponent<TargetController>());
